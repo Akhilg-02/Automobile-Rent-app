@@ -1,0 +1,38 @@
+.box{
+  border:0px solid red;
+  background-image: url("../Images/imgBg.jpg");
+  height: 450px;
+  width: 100%;
+  background-size:cover;
+  position: relative;
+  
+}
+
+.imgBox {
+    order: 2px solid green;
+    height:530px;
+    width: 65vw;
+    margin-left: 40vw;
+    nimation: imgBox 3s ease-out infinite;
+    
+}
+
+@keyframes imgBox {
+    0% {
+      transform: scale(1, 1);
+    }
+    50% {
+      transform: scale(1.1, 1.1);
+    }
+    100% {
+      transform: scale(.9, .9);
+    }
+  }
+
+.box1{
+    /* background-image: url("../Images/imgBg.jpg"); */
+    border: 0px solid blue;
+    position: absolute;
+    color: aliceblue;
+}
+
