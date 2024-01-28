@@ -1,0 +1,13 @@
+#footer {
+    background-color: #333333;
+    color: #fff;
+    padding: 20px;
+    width:100%;
+    margin-top: 5vh;
+    /* margin-left: 5vw; */
+  }
+
+  #footer img {
+    max-width: 100%;
+    height: auto;
+  }

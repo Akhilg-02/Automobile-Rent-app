@@ -9,12 +9,11 @@ const Header = () => {
   return (
     <Box className="box">
       <Grid container owSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
-        <Box style={{marginTop:"30vh",marginLeft:"7vh"}}>
+        <Box style={{marginTop:"20vh",marginLeft:"6vw"}}>
           <Grid item xs={7} className="box1">
-          <Typography variant="h2">Rent the highest caliber Automobile</Typography>
-          <Typography variant="h5">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum, modi. Saepe, facere porro 
+          <Typography variant="h3">Rent the highest caliber Automobile</Typography>
+          <Typography variant="body1">
+          There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration slightly believable.
           </Typography>
         </Grid>
         </Box>

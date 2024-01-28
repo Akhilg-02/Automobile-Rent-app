@@ -1,0 +1,19 @@
+.expBox{
+    border: 0px solid yellow;
+    width: 100%;
+    height: 70vh;
+    margin-top: 6vh;
+    margin-left: 2.6vw;
+}
+
+.expImg{
+    border: 0px solid green;
+    height: 60vh;
+    width: 95%;
+    margin-top: 5vh;
+}
+
+.expTypo{
+    border: 0px solid rgb(128, 0, 68);
+    color: white;
+}

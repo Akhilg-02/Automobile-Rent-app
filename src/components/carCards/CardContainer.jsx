@@ -68,7 +68,7 @@ const cars = [
 
 const CardContainer = () => {
   return (
-    <Container style={{marginLeft:"4vw"}}>
+    <Container style={{marginLeft:"12vw"}}>
       <Grid container spacing={2}>
         {cars.map((data, ind) => {
           return (

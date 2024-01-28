@@ -1,17 +1,20 @@
 import "./App.css";
 import CardContainer from "./components/carCards/CardContainer";
-import Cards from "./components/carCards/CardData";
-import Experiance from "./components/Dashbord/Experiance";
-import DashImg from "./components/Dashbord/Header";
+import MiddleCard from "./components/Dashbord/MiddleCard";
+import Header from "./components/Dashbord/Header";
 import NavigationBar from "./components/Dashbord/NavigationBar";
+import Footer from "./components/Dashbord/Footer";
+import PickupTab from "./components/Dashbord/PickupTab";
 
 function App() {
   return (
     <div className="App">
       <NavigationBar />
-      <DashImg />
+      <Header />
+      <PickupTab/>
       <CardContainer />
-      <Experiance/>
+      <MiddleCard/>
+      <Footer/>
     </div>
   );
 }
