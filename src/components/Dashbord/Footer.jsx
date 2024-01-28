@@ -3,6 +3,11 @@ import React from "react";
 import PhoneIcon from "@mui/icons-material/Phone";
 import EmailIcon from "@mui/icons-material/Email";
 import RoomIcon from "@mui/icons-material/Room";
+import Fab from "@mui/material/Fab";
+import AddIcon from "@mui/icons-material/Add";
+import EditIcon from "@mui/icons-material/Edit";
+import FavoriteIcon from "@mui/icons-material/Favorite";
+import NavigationIcon from "@mui/icons-material/Navigation";
 
 import "../../Css/footer.css";
 
@@ -14,23 +19,41 @@ const Footer = () => {
         <Grid item xs={12} md={3}>
           <img src="your-logo.png" alt="Website Logo" />
           <br />
-          <br/>
+          <br />
           <Typography>
             It is a long established fact that a reader will be distracted by
             the readable content of a page when looking at its layout. normal
             distribution of letters, as opposed to using 'Content here.
           </Typography>
+
+          {/* ------ */}
+          <Box sx={{ "& > :not(style)": { m: 1 } }}>
+            <Fab color="primary" aria-label="add">
+              <AddIcon />
+            </Fab>
+            <Fab color="secondary" aria-label="edit">
+              <EditIcon />
+            </Fab>
+            <Fab variant="extended">
+              <NavigationIcon/>
+              {/* Navigate sx={{ mr: 1 }} */}
+            </Fab>
+            <Fab aria-label="like">
+              <FavoriteIcon />
+            </Fab>
+          </Box>
         </Grid>
 
         {/* Quick Links */}
         <Grid item xs={12} md={3}>
-          <Typography variant="h5">Quick Links</Typography>
-
-          <a>Home</a>
-          <br />
-          <a>About Us</a>
-          <br />
-          <a>Services</a>
+          <Box ml={8}>
+            <Typography variant="h5">Quick Links</Typography>
+            <a>Home</a>
+            <br />
+            <a>About Us</a>
+            <br />
+            <a>Services</a>
+          </Box>
         </Grid>
 
         {/* Services */}

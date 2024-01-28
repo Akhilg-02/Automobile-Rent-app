@@ -21,8 +21,11 @@
     margin-right: 10px;
   }
   
-  .search-button {
+  #search-button {
     margin-left: 10px;
+    background-color:#6A5ACD;
+    margin-top:4vh;
+    height:7vh
   }
 
   .MuiOutlinedInput-input {

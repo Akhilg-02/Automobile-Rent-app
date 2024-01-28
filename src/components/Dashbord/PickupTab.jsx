@@ -1,9 +1,10 @@
 import { TextField, Button, Box, Typography } from "@mui/material";
 import * as React from "react";
+import ElectricCarIcon from "@mui/icons-material/ElectricCar";
+
 import "../../Css/pickuptab.css";
 
 const PickupTab = () => {
-
   return (
     <Box className="container">
       <Box>
@@ -30,8 +31,9 @@ const PickupTab = () => {
         </Typography>
         <TextField variant="outlined" />
       </Box>
-      <Button variant="contained" color="primary" className="search-button">
-        Search
+      <Button variant="contained" id="search-button">
+        Search car &nbsp;&nbsp;
+        <ElectricCarIcon />
       </Button>
     </Box>
   );

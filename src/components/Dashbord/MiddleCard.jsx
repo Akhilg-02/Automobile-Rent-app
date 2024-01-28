@@ -17,8 +17,9 @@ const MiddleCard = () => {
           <img className="expImg" src={car2} alt="NO iMG" />
         </Grid>
         <Grid item xs={6} className="expTypo">
-          <Typography variant="h3">
-          Feel The Best Experience With Our Rental Deals
+          <Typography variant="h4">
+          Feel The Best Experience With Our Rental <br/>
+          Deals
           </Typography>
           <Box style={{ display: "flex",marginTop:"5vh" }}>
             <Box mr={3}>
@@ -26,7 +27,7 @@ const MiddleCard = () => {
             </Box>
             <Box>
               <Typography variant="body1">
-                <Typography variant="h4">Customer Satisfaction</Typography>
+                <Typography variant="h5">Customer Satisfaction</Typography>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit.
               </Typography>
             </Box>
@@ -38,7 +39,7 @@ const MiddleCard = () => {
             </Box>
             <Box>
               <Typography variant="body1">
-                <Typography variant="h4">Faster Bookings</Typography>
+                <Typography variant="h5">Faster Bookings</Typography>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit.
               </Typography>
             </Box>
@@ -50,7 +51,7 @@ const MiddleCard = () => {
             </Box>
             <Box>
               <Typography variant="body1">
-                <Typography variant="h4">Many Pickup Location</Typography>
+                <Typography variant="h5">Many Pickup Location</Typography>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit.
               </Typography>
             </Box>

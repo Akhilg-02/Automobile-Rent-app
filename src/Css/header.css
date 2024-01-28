@@ -1,6 +1,7 @@
 .box{
   border:0px solid red;
   background-image: url("../Images/imgBg.jpg");
+  /* imgBg.jpg */
   height: 450px;
   width: 100%;
   background-size:cover;
@@ -10,9 +11,10 @@
 
 .imgBox {
     border: 0px solid green;
-    height:530px;
+    height:500px;
     width: 65vw;
     margin-left: 40vw;
+    margin-top: 6vh;
     nimation: imgBox 3s ease-out infinite;
     
 }
