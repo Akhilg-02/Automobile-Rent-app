@@ -1,0 +1,15 @@
+.headField{
+    text-align: center;
+    color: aliceblue;
+}
+
+#cardBody{
+    background-color: rgba(0, 0, 0, 0.2);
+    transition: transform .5s;
+    border-radius: 8px;
+}
+
+#cardBody:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+}

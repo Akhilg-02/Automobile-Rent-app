@@ -8,6 +8,8 @@ import AddIcon from "@mui/icons-material/Add";
 import EditIcon from "@mui/icons-material/Edit";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import NavigationIcon from "@mui/icons-material/Navigation";
+import AdbIcon from "@mui/icons-material/Adb";
+
 
 import "../../Css/footer.css";
 
@@ -17,7 +19,25 @@ const Footer = () => {
       <Grid container columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
         {/* Website Information */}
         <Grid item xs={12} md={3}>
-          <img src="your-logo.png" alt="Website Logo" />
+          {/* <img src="your-logo.png" alt="Website Logo" /> */}
+          <AdbIcon x={{flexGrow: 1, display: { xs: "none", md: "flex" }, r: 1 }} />
+          <Typography
+            variant="h6"
+            oWrap
+            component="a"
+            href="#app-bar-with-responsive-menu"
+            sx={{
+              r: 2,
+              display: { xs: "none", md: "flex" },
+              fontFamily: "monospace",
+              fontWeight: 700,
+              letterSpacing: ".3rem",
+              color: "inherit",
+              textDecoration: "none",
+            }}
+          >
+            AUTOMOBILE
+          </Typography>
           <br />
           <br />
           <Typography>

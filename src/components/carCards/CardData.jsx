@@ -29,7 +29,7 @@ const Cards = ({ data }) => {
   //const[state,setState] = useState([])
   return (
     <Box className="cardBox" rowSpacing={1} mt={8}>
-      <Card sx={{ maxWidth: 325 }}>
+      <Card sx={{ maxWidth: 325,height:"46vh" }}>
         {/* <CardActionArea> */}
         <CardMedia
           component="img"
@@ -38,13 +38,15 @@ const Cards = ({ data }) => {
           alt="green iguana"
         />
         <CardContent>
+          <Box style={{display:"flex",justifyContent:"space-between"}}>
+          <Typography gutterBottom variant="h5" component="div">
+            {data.name}
+          </Typography>
           <Typography gutterBottom variant="body4">
             <GradeRoundedIcon />
             {data.ratings}
           </Typography>
-          <Typography gutterBottom variant="h5" component="div">
-            {data.name}
-          </Typography>
+          </Box>
           <Box style={{ border: "0px solid red", marginLeft: "2vw" }}>
             <Grid
               container
@@ -52,26 +54,26 @@ const Cards = ({ data }) => {
               columnSpacing={{ xs: 1, sm: 2, md: 3 }}
             >
               <Grid item xs={6}>
-                <Typography variant="body3" color="text.secondary">
-                  <PersonIcon />
+                <Typography variant="body3" >
+                  <PersonIcon /> &nbsp;&nbsp;
                   {data.passengers}
                 </Typography>
               </Grid>
               <Grid item xs={6}>
-                <Typography variant="body3" color="text.secondary">
-                  <DirectionsCarRoundedIcon />
+                <Typography variant="body3" >
+                  <DirectionsCarRoundedIcon /> &nbsp;&nbsp;
                   {data.body}
                 </Typography>
               </Grid>
               <Grid item xs={6}>
-                <PatternRoundedIcon />
-                <Typography variant="body3" color="text.secondary">
+                <PatternRoundedIcon /> &nbsp;&nbsp;
+                <Typography variant="body3" >
                   {data.type}
                 </Typography>
               </Grid>
               <Grid item xs={6}>
-                <LineAxisRoundedIcon />
-                <Typography variant="body3" color="text.secondary">
+                <LineAxisRoundedIcon /> &nbsp;&nbsp;
+                <Typography variant="body3" >
                   {data.condition}
                 </Typography>
               </Grid>
@@ -82,17 +84,18 @@ const Cards = ({ data }) => {
         <Box
           style={{
             display: "flex",
-            arginLeft: "3vw",
             justifyContent: "space-evenly",
           }}
         >
-          <Box>
-            <AttachMoneyRoundedIcon />
+          <Box ml={3}>
+            <AttachMoneyRoundedIcon />&nbsp;&nbsp;
             {data.charge}/day
           </Box>
           <Box>
             {/* <CardActions> */}
-            <Button size="small" color="primary">
+            <Button
+            sx={{width:"7vw",height:"6vh",marginLeft:"2vw",backgroundColor:"#6A5ACD"}}
+            variant="contained" size="small">
               BOOK
             </Button>
             {/* </CardActions> */}
