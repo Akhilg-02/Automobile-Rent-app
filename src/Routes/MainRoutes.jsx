@@ -1,18 +1,19 @@
-// import { Route, Routes } from "react-router-dom";
-// import { Cart } from "../components/cart";
-// import { Mainpage } from "../components/Main";
-// import { SingleData } from "../components/singleStore";
-// import { Store } from "../components/store";
+import { Route, Routes } from "react-router-dom";
+import Header from "../components/Dashbord/Header";
+import CardContainer from "../components/carCards/CardContainer";
+import DashboardCardContainer from "../components/carCards/DashboardCardContainer";
 
-// export const MainRoutes = () => {
-//   return (
-//     <>
-//       <Routes>
-//         <Route path="/" element={<Mainpage />} />
-//         <Route path="/store" element={<Store />} />
-//         <Route path="/store/:id" element={<SingleData />} />
-//         <Route path="/store/:id/cart" element={<Cart />} />
-//       </Routes>
-//     </>
-//   );
-// };
+
+export const MainRoutes = () => {
+  return (
+    <>
+      <Routes>
+        <Route path="/" element={<Header/>} />
+        <Route path="/cars" element={<CardContainer />} />
+        <Route path="#services" element={<DashboardCardContainer/>} />
+        {/* <Route path="/store/:id" element={<SingleData />} />
+        <Route path="/store/:id/cart" element={<Cart />} /> */}
+      </Routes>
+    </>
+  );
+};

@@ -1,0 +1,16 @@
+.navbar{
+    background:transparent;
+    height: 80px;
+    width: 100%;
+    display: flex;
+    position: fixed;
+    font-size: 1.2rem;
+    top: 0;
+    left:0;
+    z-index: 1;
+}
+
+.navbar.active{
+    background-color: rgb(33,36,37);
+    opacity: 0.8;
+}

@@ -1,6 +1,6 @@
 import { Container, Grid, Typography  } from "@mui/material";
 import car1 from "../../Images/banner.png";
-import DashboardCarData from "./DashboardCarData";
+import CardData from "./CardData";
 
 const cars = [
   {
@@ -65,36 +65,18 @@ const cars = [
   },
 ];
 
-const dashCards = [
-  {
-    name: "Wedding Rides",
-    charge:"$ 200/Day",
-    img: car1,
-  },
-  {
-    name: "Coporate Rides",
-    charge: "$ 200/Day",
-    img: car1,
-  },
-  {
-    name: "Executive Rides",
-    charge: "$ 200/Day",
-    img: car1,
-  },
-];
-
 const CardContainer = () => {
   // const extractedData = cars.slice(0, 3);
   return (
     <Container style={{ marginLeft: "12vw" }}>
-       <Typography mt={8} className="headField" gutterBottom variant="h3" component="div">
+       {/* <Typography mt={8} className="headField" gutterBottom variant="h3" component="div">
       Services We Offered
-          </Typography>
+          </Typography> */}
       <Grid container spacing={2}>
-        {dashCards.map((data, ind) => {
+        {cars.map((data, ind) => {
           return (
             <Grid key={ind} item xs={12} md={6} lg={4}>
-              <DashboardCarData data={data} />
+              <CardData data={data} />
             </Grid>
           );
         })}
