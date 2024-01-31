@@ -1,133 +1,133 @@
-import {useState} from "react";
-import { Box, Grid, Typography,AppBar,Toolbar,Menu,Container,Avatar,Button,Tooltip,MenuItem, ListItemText  } from "@mui/material";
+import { useState } from "react";
+import logo from "../../Images/logoNew.png";
+import {
+  Box,
+  Grid,
+  Typography,
+  AppBar,
+  Toolbar,
+  Menu,
+  Container,
+  Avatar,
+  Button,
+  Tooltip,
+  MenuItem,
+  ListItemText,
+} from "@mui/material";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import AdbIcon from "@mui/icons-material/Adb";
 
-import { Link, Route, Routes, useNavigate } from "react-router-dom";
-import { AppContainer, AppbarHeader, LogoImage, MyList } from "../../theme/navBar";
+import { Route, Routes, useNavigate } from "react-router-dom";
+import {
+  AppContainer,
+  AppbarHeader,
+  LogoImage,
+  MyList,
+} from "../../theme/navBar";
+import { Link, animateScroll as scroll } from "react-scroll";
 
 import "../../Css/navbar.css";
 
-const pages = ["Products", "Pricing", "Blog"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
+const style = {
+  marginRight: "7vw",
+};
+
 function NavigationBar() {
+  const [navBar, setNavBar] = useState(false);
 
-  const [navBar,setNavBar] = useState(false);
+  const navigate = useNavigate();
 
-  const navigate = useNavigate()
-
-  const navScroller = ()=>{
-    if(window.scrollY >= 80){
+  const navScroller = () => {
+    if (window.scrollY >= 80) {
       setNavBar(true);
+    } else {
+      setNavBar(false);
     }
-    else{
-      setNavBar(false)
-    }
-  }
+  };
 
-  window.addEventListener("scroll",navScroller)
-  // const [anchorElNav, setAnchorElNav] = React.useState(null);
-  // const [anchorElUser, setAnchorElUser] = React.useState(null);
+ 
+  const [anchorElNav, setAnchorElNav] =useState(null);
+  const [anchorElUser, setAnchorElUser] =useState(null);
 
-  // const handleOpenNavMenu = (event) => {
-  //   setAnchorElNav(event.currentTarget);
-  // };
-  // const handleOpenUserMenu = (event) => {
-  //   setAnchorElUser(event.currentTarget);
-  // };
+  const handleOpenNavMenu = (event) => {
+    setAnchorElNav(event.currentTarget);
+  };
+  const handleOpenUserMenu = (event) => {
+    setAnchorElUser(event.currentTarget);
+  };
 
-  // const handleCloseNavMenu = () => {
-  //   setAnchorElNav(null);
-  // };
+  const handleCloseNavMenu = () => {
+    setAnchorElNav(null);
+  };
 
-  // const handleCloseUserMenu = () => {
-  //   setAnchorElUser(null);
-  // };
+  const handleCloseUserMenu = () => {
+    setAnchorElUser(null);
+  }; 
+  
+  // primaryTypographyProps={{style:null}} {navBar ? "navbar active" : "navbar"}
+  
+  window.addEventListener("scroll", navScroller);
 
   return (
-
     <>
-    <AppContainer container className={navBar?"navbar active":"navbar"}>
-      <AppbarHeader>
-        <LogoImage/>
-      </AppbarHeader>
-      <MyList id="navList" type="row">
-        <ListItemText onClick={null} primaryTypographyProps={{style:null}} primary="Home"/>
-        <ListItemText onClick={null} primary="Home"/>
-        <ListItemText onClick={null} primary="Home"/>
-      </MyList>
-
-    </AppContainer>
+      <AppContainer container className={navBar ? "navbar active" : "navbar"}>
+        <AppbarHeader>
+          <LogoImage src={logo} alt="logo" />
+        </AppbarHeader>
+        <MyList id="navList" type="row">
+          <Link to="home" smooth={true} duration={500}>
+            <ListItemText
+              primaryTypographyProps={{ style: style }}
+              primary="Home"
+            />
+          </Link>
+          <Link to="services" smooth={true} duration={500}>
+            <ListItemText
+              primaryTypographyProps={{ style: style }}
+              primary="Car"
+            />
+          </Link>
+          <Link to="services" smooth={true} duration={500}>
+            <ListItemText
+              rimaryTypographyProps={{ style: style }}
+              primary="Service"
+            />{" "}
+          </Link>
+        </MyList>
+        <Box sx={{ flexGrow: 0 }} ml={2}>
+            <Tooltip title="Open settings">
+              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+              </IconButton>
+            </Tooltip>
+            <Menu
+              sx={{ mt: "45px" }}
+              id="menu-appbar"
+              anchorEl={anchorElUser}
+              anchorOrigin={{
+                vertical: "top",
+                horizontal: "right",
+              }}
+              keepMounted
+              transformOrigin={{
+                vertical: "top",
+                horizontal: "right",
+              }}
+              open={Boolean(anchorElUser)}
+              onClose={handleCloseUserMenu}
+            >
+              {settings.map((setting) => (
+                <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                  <Typography textAlign="center">{setting}</Typography>
+                </MenuItem>
+              ))}
+            </Menu>
+          </Box>
+      </AppContainer>
     </>
-    // <AppBar position="static" style={{backgroundColor:"#333333"}}>
-    //   <Container maxWidth="xl">
-    //     <Toolbar disableGutters>
-    //       <AdbIcon x={{flexGrow: 1, display: { xs: "none", md: "flex" }, mr: 1 }} />
-    //       <Typography
-    //         variant="h6"
-    //         noWrap
-    //         component="a"
-    //         href="#app-bar-with-responsive-menu"
-    //         sx={{
-    //           mr: 2,
-    //           flexGrow: 120,
-    //           display: { xs: "none", md: "flex" },
-    //           fontFamily: "monospace",
-    //           fontWeight: 700,
-    //           letterSpacing: ".3rem",
-    //           color: "inherit",
-    //           textDecoration: "none",
-    //         }}
-    //       >
-    //         AUTOMOBILE
-    //       </Typography>
-
-    //       <Box sx={{ flexGrow: 20, display: { xs: "none", md: "flex" } }}>
-    //         <Box>
-    //         <Link to="/">Home</Link>
-    //         </Box>
-    //         <Box>
-    //         <Link to="/cars">Cars</Link>
-    //         </Box>
-    //         <Box>
-    //         <Link to="/services">Services</Link>
-    //         </Box>
-    //       </Box>
-
-    //       <Box sx={{ flexGrow: 0 }}>
-    //         <Tooltip title="Open settings">
-    //           <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-    //             <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-    //           </IconButton>
-    //         </Tooltip>
-    //         <Menu
-    //           sx={{ mt: "45px" }}
-    //           id="menu-appbar"
-    //           anchorEl={anchorElUser}
-    //           anchorOrigin={{
-    //             vertical: "top",
-    //             horizontal: "right",
-    //           }}
-    //           keepMounted
-    //           transformOrigin={{
-    //             vertical: "top",
-    //             horizontal: "right",
-    //           }}
-    //           open={Boolean(anchorElUser)}
-    //           onClose={handleCloseUserMenu}
-    //         >
-    //           {settings.map((setting) => (
-    //             <MenuItem key={setting} onClick={handleCloseUserMenu}>
-    //               <Typography textAlign="center">{setting}</Typography>
-    //             </MenuItem>
-    //           ))}
-    //         </Menu>
-    //       </Box>
-    //     </Toolbar>
-    //   </Container>
-    // </AppBar>
   );
 }
 export default NavigationBar;

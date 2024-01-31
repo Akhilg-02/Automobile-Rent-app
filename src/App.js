@@ -12,10 +12,11 @@ function App() {
     <div className="App">
       <NavigationBar />
       <MainRoutes/>
+      {/* <Header/> 
       <PickupTab/>
        <DashboardCardContainer />
       <MiddleCard/>
-      <Footer/>
+      <Footer/>*/}
     </div>
   );
 }

@@ -10,7 +10,7 @@ import "../../Css/header.css";
 const Header = () => {
   return (
     <>
-      <Box className="box">
+      <Box className="box" id="home">
         <Grid container owSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
           <Box style={{ marginTop: "20vh", marginLeft: "6vw" }}>
             <Grid item xs={6} className="box1">

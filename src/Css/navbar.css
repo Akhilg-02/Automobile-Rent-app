@@ -1,5 +1,6 @@
 .navbar{
     background:transparent;
+    border: 0px solid red;
     height: 80px;
     width: 100%;
     display: flex;
@@ -11,6 +12,10 @@
 }
 
 .navbar.active{
-    background-color: rgb(33,36,37);
-    opacity: 0.8;
+    background-color: rgba(23, 26, 27, 0.864);
+    opacity: 1;
 }
+
+/* #navList{
+    display: inline;
+} */
