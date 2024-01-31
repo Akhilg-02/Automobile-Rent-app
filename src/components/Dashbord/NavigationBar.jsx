@@ -48,6 +48,9 @@ function NavigationBar() {
     }
   };
 
+  const handelCars=()=>{
+    navigate("/cars")
+  }
  
   const [anchorElNav, setAnchorElNav] =useState(null);
   const [anchorElUser, setAnchorElUser] =useState(null);
@@ -84,7 +87,7 @@ function NavigationBar() {
               primary="Home"
             />
           </Link>
-          <Link to="services" smooth={true} duration={500}>
+          <Link onClick={handelCars} smooth={true} duration={500}>
             <ListItemText
               primaryTypographyProps={{ style: style }}
               primary="Car"
