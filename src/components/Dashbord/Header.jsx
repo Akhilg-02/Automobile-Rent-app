@@ -4,10 +4,16 @@ import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import { Typography, Button } from "@mui/material";
 import ElectricCarIcon from "@mui/icons-material/ElectricCar";
+import { useNavigate } from "react-router-dom";
 
 import "../../Css/header.css";
 
 const Header = () => {
+  const navigate = useNavigate();
+
+  const handelCars=()=>{
+    navigate("/cars")
+  }
   return (
     <>
       <Box className="box" id="home">
@@ -22,7 +28,7 @@ const Header = () => {
                 but the majority have suffered alteration slightly believable.
                 <br />
                 <br />
-                <Button variant="contained" className="search-button">
+                <Button variant="contained" id="searchBtn" onClick={handelCars}>
                   Book now &nbsp;&nbsp;
                   <ElectricCarIcon />
                 </Button>

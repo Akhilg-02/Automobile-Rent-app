@@ -51,19 +51,16 @@ function NavigationBar() {
   const handelCars=()=>{
     navigate("/cars")
   }
+
+  const handelHome =()=>{
+    navigate("/")
+  }
  
   const [anchorElNav, setAnchorElNav] =useState(null);
   const [anchorElUser, setAnchorElUser] =useState(null);
 
-  const handleOpenNavMenu = (event) => {
-    setAnchorElNav(event.currentTarget);
-  };
   const handleOpenUserMenu = (event) => {
     setAnchorElUser(event.currentTarget);
-  };
-
-  const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
   };
 
   const handleCloseUserMenu = () => {
@@ -78,7 +75,7 @@ function NavigationBar() {
     <>
       <AppContainer container className={navBar ? "navbar active" : "navbar"}>
         <AppbarHeader>
-          <LogoImage src={logo} alt="logo" />
+          <LogoImage src={logo} alt="logo" onClick={handelHome}/>
         </AppbarHeader>
         <MyList id="navList" type="row">
           <Link to="home" smooth={true} duration={500}>

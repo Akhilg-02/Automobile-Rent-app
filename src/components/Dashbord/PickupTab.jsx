@@ -1,10 +1,16 @@
 import { TextField, Button, Box, Typography } from "@mui/material";
 import * as React from "react";
 import ElectricCarIcon from "@mui/icons-material/ElectricCar";
+import { useNavigate } from "react-router-dom";
 
 import "../../Css/pickuptab.css";
 
 const PickupTab = () => {
+  const navigate = useNavigate();
+
+  const handelCars=()=>{
+    navigate("/cars")
+  }
   return (
     <Box className="container">
       <Box>
@@ -31,7 +37,7 @@ const PickupTab = () => {
         </Typography>
         <TextField variant="outlined" label="30/01/24" />
       </Box>
-      <Button variant="contained" id="search-button">
+      <Button variant="contained" id="search-button" onClick={handelCars}>
         Search car &nbsp;&nbsp;
         <ElectricCarIcon />
       </Button>

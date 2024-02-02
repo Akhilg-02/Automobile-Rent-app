@@ -12,7 +12,7 @@ import PatternRoundedIcon from "@mui/icons-material/PatternRounded";
 import GradeRoundedIcon from "@mui/icons-material/GradeRounded";
 import AttachMoneyRoundedIcon from "@mui/icons-material/AttachMoneyRounded";
 
-import "../../Css/cards.css";
+
 
 // {
 //   name: "volvo",
@@ -26,7 +26,6 @@ import "../../Css/cards.css";
 // },
 
 const Cards = ({ data }) => {
-  //const[state,setState] = useState([])
   return (
     <Box className="cardBox" rowSpacing={1} mt={8}>
       <Card sx={{ maxWidth: 325,height:"46vh" }}>

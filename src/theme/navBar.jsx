@@ -41,7 +41,7 @@ export const LogoImage = styled("img")(({ src }) => ({
   scr: `url(${src})`,
   width: "20vw",
   height: "40vh",
-  marginTop: "-8.5%",
+  marginTop: "-10%",
   marginLeft:"-4%",
   color: "",
 }));
