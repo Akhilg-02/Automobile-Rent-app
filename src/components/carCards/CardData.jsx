@@ -27,7 +27,7 @@ import AttachMoneyRoundedIcon from "@mui/icons-material/AttachMoneyRounded";
 
 const Cards = ({ data }) => {
   return (
-    <Box className="cardBox" rowSpacing={1} mt={8}>
+    <Box className="cardBox" rowSpacing={1} >
       <Card sx={{ maxWidth: 325,height:"46vh" }}>
         {/* <CardActionArea> */}
         <CardMedia

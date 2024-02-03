@@ -12,6 +12,7 @@ function App() {
     <div className="App">
       <NavigationBar />
       <MainRoutes/>
+      <Footer/>
       {/* <Header/> 
       <PickupTab/>
        <DashboardCardContainer />

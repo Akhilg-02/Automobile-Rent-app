@@ -1,7 +1,6 @@
 .sideBox{
-    border: 2px solid red;
+    border: 0px solid red;
     height: auto;
-    margin-top: 25vh;
     width: 20vw;
     color: aliceblue;
     background-color: rgba(0, 0, 0, 0.795);
@@ -16,5 +15,18 @@
     color: brown;
     cursor: pointer;
     border-radius: 5.6px;
+}
+
+/* Card Container Css */
+
+#carHeader{
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    border: 0px solid blue;
+    height: 66vh;
+    width: 100%;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.745), rgba(0, 0, 0, 0.586)),url("../Images/c2.jpg");
+    background-size:cover;
 }
 

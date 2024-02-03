@@ -12,7 +12,6 @@ const MergeComponent = () => {
     <PickupTab/>
     <DashboardCardContainer/>
     <MiddleCard/>
-    <Footer/> 
     </>
   )
 }

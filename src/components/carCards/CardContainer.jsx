@@ -5,6 +5,9 @@ import CarSideBox from "./CarSideBox";
 
 import { useState } from "react";
 
+import "../../Css/CarSideBox.css";
+import PickupTab from "../Dashbord/PickupTab";
+
 const cars = [
   {
     name: "volvo",
@@ -68,6 +71,8 @@ const cars = [
   },
 ];
 
+
+
 const CardContainer = () => {
   const [selectedBrand, setSelectedBrand] = useState(null);
   const [selectedPriceRange, setSelectedPriceRange] = useState(null);
@@ -80,7 +85,21 @@ const CardContainer = () => {
     setSelectedPriceRange(priceRange);
   };
   return (
-    <Box style={{display:"flex"}}>
+    <>
+    <Box id="carHeader">
+      <Typography 
+       sx={{
+        color:"aliceblue",
+        textAlign:"center",   
+       }}
+      variant="h2">
+        Our Cars
+      </Typography>
+    </Box>
+    <Box>
+      <PickupTab/>
+    </Box>
+    <Box style={{display:"flex" ,border:"0px solid yellow",padding:"5%"}} ml={3}>
       <Box>
         <CarSideBox 
         onSelectBrand={handleSelectBrand}
@@ -92,8 +111,10 @@ const CardContainer = () => {
         {cars
          .filter((car) => (
           (!selectedBrand || car.name.toLowerCase() === selectedBrand.toLowerCase()) &&
-          ((selectedPriceRange === 'low' && car.charge < 600) ||
-            (selectedPriceRange === 'high' && car.charge >= 100))
+          (!selectedPriceRange ||
+            (selectedPriceRange === 'low' && car.charge < 600) ||
+            (selectedPriceRange === 'high' && car.charge >= 100)
+          )
         ))
         .map((data, ind) => {
           return (
@@ -105,7 +126,7 @@ const CardContainer = () => {
       </Grid>
     </Container>
     </Box>
-   
+   </>
   );
 };
 
