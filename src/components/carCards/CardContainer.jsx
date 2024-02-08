@@ -119,7 +119,7 @@ const CardContainer = () => {
         .map((data, ind) => {
           return (
             <Grid key={ind} item xs={12} md={6} lg={4}>
-              <CardData data={data} />
+              <CardData data={data} index={ind} />
             </Grid>
           );
         })}

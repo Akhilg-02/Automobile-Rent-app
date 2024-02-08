@@ -1,17 +1,14 @@
-import { useState } from "react";
-import { Box, Grid, styled, Paper } from "@mui/material";
+import {  useNavigate } from "react-router-dom";
+import { Box, Grid, styled, Button,Typography } from "@mui/material";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
-import Typography from "@mui/material/Typography";
-import { Button, CardActionArea, CardActions } from "@mui/material";
 import PersonIcon from "@mui/icons-material/Person";
 import DirectionsCarRoundedIcon from "@mui/icons-material/DirectionsCarRounded";
 import LineAxisRoundedIcon from "@mui/icons-material/LineAxisRounded";
 import PatternRoundedIcon from "@mui/icons-material/PatternRounded";
 import GradeRoundedIcon from "@mui/icons-material/GradeRounded";
 import AttachMoneyRoundedIcon from "@mui/icons-material/AttachMoneyRounded";
-
 
 
 // {
@@ -25,11 +22,15 @@ import AttachMoneyRoundedIcon from "@mui/icons-material/AttachMoneyRounded";
 //   img: car1,
 // },
 
-const Cards = ({ data }) => {
+const Cards = ({ data,index }) => {
+  const navigate = useNavigate();
+
+  const handleBookButtonClick = () => {
+    navigate(`/detail/${index}`,{ state: { cardData: data } }); 
+  };
   return (
     <Box className="cardBox" rowSpacing={1} >
       <Card sx={{ maxWidth: 325,height:"46vh" }}>
-        {/* <CardActionArea> */}
         <CardMedia
           component="img"
           height="140"
@@ -79,7 +80,6 @@ const Cards = ({ data }) => {
             </Grid>
           </Box>
         </CardContent>
-        {/* </CardActionArea> */}
         <Box
           style={{
             display: "flex",
@@ -91,13 +91,13 @@ const Cards = ({ data }) => {
             {data.charge}/day
           </Box>
           <Box>
-            {/* <CardActions> */}
             <Button
             sx={{width:"7vw",height:"6vh",marginLeft:"2vw",backgroundColor:"#6A5ACD"}}
-            variant="contained" size="small">
+            variant="contained"
+            onClick={handleBookButtonClick}
+            size="small">
               BOOK
             </Button>
-            {/* </CardActions> */}
           </Box>
         </Box>
       </Card>

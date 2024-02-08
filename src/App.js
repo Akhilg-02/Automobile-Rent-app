@@ -13,11 +13,6 @@ function App() {
       <NavigationBar />
       <MainRoutes/>
       <Footer/>
-      {/* <Header/> 
-      <PickupTab/>
-       <DashboardCardContainer />
-      <MiddleCard/>
-      <Footer/>*/}
     </div>
   );
 }

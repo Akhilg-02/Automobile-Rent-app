@@ -1,8 +1,7 @@
 import { Route, Routes } from "react-router-dom";
-import Header from "../components/Dashbord/Header";
 import CardContainer from "../components/carCards/CardContainer";
-import DashboardCardContainer from "../components/carCards/DashboardCardContainer";
 import MergeComponent from "../components/Dashbord/MergeComponent";
+import CardDetails from "../components/carCards/CardDetails";
 
 
 export const MainRoutes = () => {
@@ -11,7 +10,7 @@ export const MainRoutes = () => {
       <Routes>
         <Route path="/" element={<MergeComponent/>} />
         <Route path="/cars" element={<CardContainer />} />
-        {/* <Route path="#services" element={<DashboardCardContainer/>} /> */}
+        <Route path="/detail/:index" element={<CardDetails/>} />
       </Routes>
     </>
   );

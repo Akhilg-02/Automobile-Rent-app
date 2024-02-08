@@ -30,3 +30,9 @@
     background-size:cover;
 }
 
+/* Card detail css */
+
+.detailImg{
+    height: 60vh;
+}
+
