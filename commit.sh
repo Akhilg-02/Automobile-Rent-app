@@ -8,7 +8,7 @@ git add --all
 git status
 
 # Commit changes with a specified message
-git commit -m "added the card details page, details according to index"
+git commit -m "added the card details page, added rating , car details ,book form"
 
 # Push changes to the remote repository
 git push origin main
