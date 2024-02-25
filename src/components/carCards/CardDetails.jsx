@@ -13,6 +13,7 @@ import GradeIcon from "@mui/icons-material/Grade";
 import ReplyIcon from "@mui/icons-material/Reply";
 
 import "../../Css/CarSideBox.css";
+import PaymentForm from "../Payment/PaymentForm";
 
 const CardDetails = () => {
   const location = useLocation();
@@ -22,7 +23,9 @@ const CardDetails = () => {
     <GradeIcon key={index} style={{ color: "yellow", fontSize: "2rem" }} />
   ));
 
-  const arrow = <ReplyIcon sx={{ transform: "scaleX(-1)" }} />;
+  const arrow = (
+    <ReplyIcon sx={{ transform: "scaleX(-1)", color: "#e0312c" }} />
+  );
   return (
     <>
       <Box id="carHeader">
@@ -48,12 +51,15 @@ const CardDetails = () => {
           columnSpacing={{ xs: 1, sm: 2, md: 3 }}
           mt={4}
         >
-          <Grid item xs={6} sx={{ border: "0px solid yellow" }} p={3}>
+          <Grid item xs={7} sx={{ border: "0px solid yellow" }} p={3}>
             <Typography variant="h2" component="div">
               {cardData.name}
             </Typography>
-            <Typography variant="h6" component="div" fontSize={38}>
-              {cardData.charge}/day
+            <Typography variant="h6" component="div">
+              <span style={{ color: "green", fontSize: "2.4rem" }}>
+                ${cardData.charge}
+              </span>
+              &nbsp; / Day
             </Typography>
             <Typography variant="h3" component="div">
               {stars}
@@ -63,65 +69,29 @@ const CardDetails = () => {
               explicabo excepturi cumque maiores doloremque repudiandae sequi
               esse voluptatum deserunt nihil.
             </Typography>
+            <Box mt={3}>
+              <Typography variant="body3">
+                {arrow} &nbsp; Passengers : {cardData.passengers}
+              </Typography>
+              <br />
 
-            <Typography variant="body3">
-              {arrow}
-              Passengers : {cardData.passengers}
-            </Typography>
-            <br />
+              <Typography variant="body3">
+                {arrow} &nbsp; Type : {cardData.body}
+              </Typography>
+              <br />
 
-            <Typography variant="body3">
-              {arrow}
-              Type : {cardData.body}
-            </Typography>
-            <br />
-
-            <Typography variant="body3">
-              {arrow}
-              Gear : {cardData.type}
-            </Typography>
-            <br />
-            <Typography variant="body3">
-              {arrow}
-              Condition : {cardData.condition}
-            </Typography>
+              <Typography variant="body3">
+                {arrow} &nbsp; Gear : {cardData.type}
+              </Typography>
+              <br />
+              <Typography variant="body3">
+                {arrow} &nbsp; Condition : {cardData.condition}
+              </Typography>
+            </Box>
             <br />
           </Grid>
-          <Grid item xs={6} sx={{ border: "0px solid red" }} p={3}>
-            <Paper elevation={3} style={{ padding: 20 }} >
-              <Grid container spacing={2}>
-                <Grid item xs={12} sm={12}>
-                  <TextField fullWidth label="First Name" />
-                </Grid>
-                <Grid item xs={12} sm={12}>
-                  <TextField fullWidth label="Last Name" />
-                </Grid>
-                <Grid item xs={12} sm={12}>
-                  <TextField fullWidth label="Email" />
-                </Grid>
-                <Grid item xs={12} sm={12}>
-                  <TextField fullWidth label="Phone" />
-                </Grid>
-                <Grid item xs={12} sm={12}>
-                  <TextField fullWidth label="Address" />
-                </Grid>
-                <Grid item xs={12} sm={12}>
-                  <TextField fullWidth label="City" />
-                </Grid>
-              </Grid>
-              <Grid container justifyContent="center" mt={3}>
-                <Grid item>
-                  <Button variant="contained" color="primary"
-                   sx={{
-                   width:"20vw",
-                   padding:"1rem"
-                  }}
-                  >
-                    Book Now
-                  </Button>
-                </Grid>
-              </Grid>
-            </Paper>
+          <Grid item xs={5} sx={{ border: "0px solid red" }} p={3}>
+           <PaymentForm/>
           </Grid>
         </Grid>
       </Box>
