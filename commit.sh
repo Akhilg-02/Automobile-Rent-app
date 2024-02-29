@@ -8,7 +8,7 @@ git add --all
 git status
 
 # Commit changes with a specified message
-git commit -m "added form validation for booking"
+git commit -m "added payment gateway"
 
 # Push changes to the remote repository
 git push origin main
