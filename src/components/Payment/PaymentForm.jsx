@@ -8,7 +8,6 @@ import logo from "../../Images/logoNew.png";
 import { API_KEY } from "./constant.js";
 
 
-//API_KEY="rzp_test_lizAvALnrlniED"API_KEY
 const payKey = API_KEY;
 console.log("env200",payKey);
 
