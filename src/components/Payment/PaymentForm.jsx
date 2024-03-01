@@ -5,6 +5,13 @@ import { Box, Grid, Typography, TextField, Paper, Button } from "@mui/material";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import logo from "../../Images/logoNew.png";
+import { API_KEY } from "./constant.js";
+
+
+//API_KEY="rzp_test_lizAvALnrlniED"API_KEY
+const payKey = API_KEY;
+console.log("env200",payKey);
+
 
 const validationSchema = Yup.object().shape({
   firstName: Yup.string().required("First Name is required"),
@@ -16,9 +23,6 @@ const validationSchema = Yup.object().shape({
   address: Yup.string().required("Address is required"),
   city: Yup.string().required("City is required"),
 });
-
-const payKey = process.env.RAZORPAY_API_KEY;
-console.log("env",payKey);
 
 const PaymentForm = () => {
   const [Razorpay] = useRazorpay();
@@ -85,12 +89,12 @@ const PaymentForm = () => {
 
     rzp1.on("payment.failed", function (response) {
       alert(response.error.code);
-      alert(response.error.description);
-      alert(response.error.source);
+      // alert(response.error.description);
+      // alert(response.error.source);
       alert(response.error.step);
       alert(response.error.reason);
-      alert(response.error.metadata.order_id);
-      alert(response.error.metadata.payment_id);
+      // alert(response.error.metadata.order_id);
+      // alert(response.error.metadata.payment_id);
     });
 
     rzp1.open();
