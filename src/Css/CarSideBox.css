@@ -1,7 +1,7 @@
 .sideBox{
     border: 0px solid red;
     height: auto;
-    width: 20vw;
+    width: 18vw;
     color: aliceblue;
     background-color: rgba(0, 0, 0, 0.795);
     transition: transform .5s;

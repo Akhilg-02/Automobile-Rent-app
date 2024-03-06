@@ -12,7 +12,7 @@ const PickupTab = () => {
     navigate("/cars")
   }
   return (
-    <Box className="container">
+    <Box className="container" mt={6}>
       <Box>
         <Typography variant="h6" className="inputTypo" gutterBottom>
           Pickup Location

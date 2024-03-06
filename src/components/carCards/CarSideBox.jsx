@@ -15,9 +15,9 @@ const CarSideBox = ({ onSelectBrand, onSelectPriceRange }) => {
       <Box mt={4}>
         {brands.map((item, ind) => {
           return (
-            <Typography key={ind} className="brand" mb={2} onClick={() => onSelectBrand (item)}>
+            <Typography key={ind} className="brand" mb={2} onClick={() => onSelectBrand(item)}>
+             <span style={{display:"flex"}}> 
               <KeyboardDoubleArrowRightIcon />
-              <span>
                  {item}
               </span>
             </Typography>
@@ -29,7 +29,9 @@ const CarSideBox = ({ onSelectBrand, onSelectPriceRange }) => {
       </Typography>
       <Box mt={1}>
       <Typography variant="subtitle1" component="div">
-        <MonetizationOnOutlinedIcon/> Price Range 
+      <Box style={{display:"flex"}}> 
+        <MonetizationOnOutlinedIcon/> &nbsp; Price Range 
+      </Box>
       </Typography>
       <Box mt={2} sx={{cursor:"pointer",display:"flex"}} >
         <Typography variant="body1" className="brand" onClick={() =>  onSelectPriceRange('low')}>

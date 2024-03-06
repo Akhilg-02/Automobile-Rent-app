@@ -1,6 +1,8 @@
 .container {
     display: flex;
-    margin-top: 6vh;
+    border: 0px solid red;
+    width: 80%;
+    margin: auto;
     justify-content: space-between;
     align-items: center;
     background-color: rgba(0, 0, 0, 0.2); /* Translucent colorrgba(0, 0, 0, 0.559) */

@@ -29,8 +29,8 @@ const Cards = ({ data,index }) => {
     navigate(`/detail/${index}`,{ state: { cardData: data } }); 
   };
   return (
-    <Box className="cardBox" rowSpacing={1} >
-      <Card sx={{ maxWidth: 325,height:"46vh" }}>
+    <Box className="cardBox" rowSpacing={1} ml={3} >
+      <Card sx={{ height:"46vh",width:"21vw",adding:"4px" }}>
         <CardMedia
           component="img"
           height="140"

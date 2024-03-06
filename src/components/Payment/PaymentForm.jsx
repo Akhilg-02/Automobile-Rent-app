@@ -9,7 +9,7 @@ import { API_KEY } from "./constant.js";
 
 
 const payKey = API_KEY;
-console.log("env200",payKey);
+
 
 
 const validationSchema = Yup.object().shape({
@@ -25,14 +25,15 @@ const validationSchema = Yup.object().shape({
 
 const PaymentForm = () => {
   const [Razorpay] = useRazorpay();
-  // const location = useLocation();
-  // const { cardData } = location;
-
-  // //const price = cardData.price / 100;;
-  //   const exchangeRate = 73.5;
-  //   const usdAmount = Number(cardData.price);
-  //   console.log("AMOUNT",usdAmount);
-  //   const inrAmount = usdAmount * exchangeRate;
+  const location = useLocation();
+  const { cardData } = location.state;
+ 
+ 
+    const exchangeRate = 60;
+    const usdAmount = Number(cardData.charge);
+    console.log("AMOUNT",usdAmount);
+    const inrAmount = usdAmount * exchangeRate;
+    console.log("AMOUNT", inrAmount);
 
   const formik = useFormik({
     initialValues: {
@@ -66,9 +67,9 @@ const PaymentForm = () => {
   const openRazorpayCheckout = (firstName, email, phone) => {
     const options = {
       key: payKey,
-      amount: 2000, // Amount in paise (100 paise = 1 INR)
+      amount: inrAmount * 90, // Amount in paise (100 paise = 1 INR)
       currency: "INR",
-      name: "Your Company Name",
+      name: "Rental Cars",
       description: "Purchase Description",
       image:  logo ,
       handler: handlePaymentSuccess,
@@ -78,22 +79,15 @@ const PaymentForm = () => {
         contact: phone,
       },
       theme: {
-        color: "#F37254",
+        color: "#e0312c",
       },
     };
-
-    // const razorpay = new window.Razorpay(options);
-    // razorpay.open();
     const rzp1 = new Razorpay(options);
 
     rzp1.on("payment.failed", function (response) {
       alert(response.error.code);
-      // alert(response.error.description);
-      // alert(response.error.source);
       alert(response.error.step);
       alert(response.error.reason);
-      // alert(response.error.metadata.order_id);
-      // alert(response.error.metadata.payment_id);
     });
 
     rzp1.open();

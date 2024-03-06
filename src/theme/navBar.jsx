@@ -32,7 +32,7 @@ export const MyList = styled(
   display: "flex",
   ustifyContent:"space-between",
   color: "white",
-  flexFlow: 1,
+  lexFlow: 1,
   textTransform: "uppercase",
   fontSize: "20px",
 }));

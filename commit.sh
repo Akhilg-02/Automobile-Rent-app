@@ -8,7 +8,7 @@ git add --all
 git status
 
 # Commit changes with a specified message
-git commit -m "commit"
+git commit -m "fixed the alignment issues , add the dynamic pricing in payment gateway"
 
 # Push changes to the remote repository
 git push origin main

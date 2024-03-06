@@ -15,7 +15,7 @@ const cars = [
     passengers: 4,
     type: "manual",
     ratings: 4.5,
-    charge: 100,
+    charge: 15,
     condition: "AC",
     img: car1,
   },
@@ -25,7 +25,7 @@ const cars = [
     passengers: 4,
     type: "manual",
     ratings: 4.5,
-    charge: 2000,
+    charge: 20,
     condition: "AC",
     img: car1,
   },
@@ -35,7 +35,7 @@ const cars = [
     passengers: 4,
     type: "manual",
     ratings: 4.5,
-    charge: 2000,
+    charge: 25,
     condition: "AC",
     img: car1,
   },
@@ -45,7 +45,7 @@ const cars = [
     passengers: 4,
     type: "manual",
     ratings: 4.5,
-    charge: 2000,
+    charge: 22,
     condition: "AC",
     img: car1,
   },
@@ -55,7 +55,7 @@ const cars = [
     passengers: 4,
     type: "manual",
     ratings: 4.5,
-    charge: 2000,
+    charge: 18,
     condition: "AC",
     img: car1,
   },
@@ -65,7 +65,7 @@ const cars = [
     passengers: 4,
     type: "manual",
     ratings: 4.5,
-    charge: 2000,
+    charge: 20,
     condition: "AC",
     img: car1,
   },
@@ -112,13 +112,13 @@ const CardContainer = () => {
          .filter((car) => (
           (!selectedBrand || car.name.toLowerCase() === selectedBrand.toLowerCase()) &&
           (!selectedPriceRange ||
-            (selectedPriceRange === 'low' && car.charge < 600) ||
-            (selectedPriceRange === 'high' && car.charge >= 100)
+            (selectedPriceRange === 'low' && car.charge < 19) ||
+            (selectedPriceRange === 'high' && car.charge >= 15)
           )
         ))
         .map((data, ind) => {
           return (
-            <Grid key={ind} item xs={12} md={6} lg={4}>
+            <Grid key={ind} item xs={12} md={6} lg={4} >
               <CardData data={data} index={ind} />
             </Grid>
           );
