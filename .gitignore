@@ -8,6 +8,7 @@
 # testing
 /coverage
 /src/components/Payment/constant.js
+/src/components/carCards/carData.js
 
 # production
 /build
