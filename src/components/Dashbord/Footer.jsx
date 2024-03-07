@@ -50,10 +50,11 @@ const Footer = () => {
           <Grid item xs={12} md={3}>
             <Box ml={8}>
               <Typography variant="h5">Quick Links</Typography>
+              <br />
               <a>Home</a>
-              <br />
+              <br /><br />
               <a>About Us</a>
-              <br />
+              <br /><br />
               <a>Services</a>
             </Box>
           </Grid>
@@ -61,10 +62,11 @@ const Footer = () => {
           {/* Services */}
           <Grid item xs={12} md={3}>
             <Typography variant="h5">Services</Typography>
+            <br />
             Wedding Rides
-            <br />
+            <br /><br />
             Corporate Rides
-            <br />
+            <br /><br />
             Executive Rides
           </Grid>
 

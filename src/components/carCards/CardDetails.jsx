@@ -44,14 +44,21 @@ const CardDetails = () => {
           <img src={cardData.img} className="detailImg" alt="no img" />
         </Paper>
       </Box>
-      <Box sx={{ width: "75%", margin: "auto" }}>
+      <Box
+        sx={{
+          width: "75%",
+          margin: "auto",
+          border: "0px solid red",
+          arginLeft: "5vw",
+        }}
+      >
         <Grid
           container
           rowSpacing={1}
           columnSpacing={{ xs: 1, sm: 2, md: 3 }}
           mt={4}
         >
-          <Grid item xs={7} sx={{ border: "0px solid yellow" }} p={3}>
+          <Grid item xs={6} sx={{ border: "0px solid yellow" }} p={3} ml={8}>
             <Typography variant="h2" component="div">
               {cardData.name}
             </Typography>
@@ -70,28 +77,31 @@ const CardDetails = () => {
               esse voluptatum deserunt nihil.
             </Typography>
             <Box mt={3}>
-              <Typography variant="body3">
-                {arrow} &nbsp; Passengers : {cardData.passengers}
+              <Typography variant="body3" sx={{ display: "flex" }}>
+                {arrow} &nbsp; &nbsp;
+                <span style={{ marginTop: "5px" }}>
+                  Passengers : {cardData.passengers}
+                </span>
               </Typography>
               <br />
 
-              <Typography variant="body3">
-                {arrow} &nbsp; Type : {cardData.body}
+              <Typography variant="body3" sx={{ display: "flex" }}>
+                {arrow}&nbsp; &nbsp; Type : {cardData.body}
               </Typography>
               <br />
 
-              <Typography variant="body3">
-                {arrow} &nbsp; Gear : {cardData.type}
+              <Typography variant="body3" sx={{ display: "flex" }}>
+                {arrow} &nbsp; &nbsp; Gear : {cardData.type}
               </Typography>
               <br />
-              <Typography variant="body3">
+              <Typography variant="body3" sx={{ display: "flex" }}>
                 {arrow} &nbsp; Condition : {cardData.condition}
               </Typography>
             </Box>
             <br />
           </Grid>
           <Grid item xs={5} sx={{ border: "0px solid red" }} p={3}>
-           <PaymentForm/>
+            <PaymentForm />
           </Grid>
         </Grid>
       </Box>

@@ -1,5 +1,5 @@
-import { useState, useCallback } from "react";
-import { useParams, useLocation } from "react-router-dom";
+import { useState} from "react";
+import {useLocation } from "react-router-dom";
 import useRazorpay from "react-razorpay";
 import { Box, Grid, Typography, TextField, Paper, Button } from "@mui/material";
 import { useFormik } from "formik";
@@ -57,6 +57,39 @@ const PaymentForm = () => {
   const handlePaymentSuccess = (response) => {
     setPaymentStatus("Payment successful!");
     // You can perform additional actions here, like updating your database or displaying a confirmation message.
+
+        // Send an HTTP request to SendGrid API to send the email
+        fetch('https://api.sendgrid.com/v3/mail/send', {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer YOUR_SENDGRID_API_KEY` // Replace with your SendGrid API key
+          },
+          body: JSON.stringify({
+              personalizations: [
+                  {
+                      to: [
+                          {
+                              email: formik.values.email // Pass user's email
+                          }
+                      ],
+                      subject: 'Your cab has been booked!'
+                  }
+              ],
+              from: {
+                  email: 'your-email@example.com' // Replace with your email address
+              },
+              content: [
+                  {
+                      type: 'text/plain',
+                      value: 'Dear customer, your cab has been successfully booked. Please come to our office to take the cab.'
+                  }
+              ]
+          })
+      })
+      .then(response => response.json())
+      .then(data => console.log(data))
+      .catch(error => console.error('Error:', error));
   };
 
   const handlePaymentError = (error) => {
