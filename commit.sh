@@ -8,7 +8,7 @@ git add --all
 git status
 
 # Commit changes with a specified message
-git commit -m "fixed the alignment issues in car page"
+git commit -m "Added email feature to after the payment"
 
 # Push changes to the remote repository
 git push origin main

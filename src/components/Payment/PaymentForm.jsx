@@ -1,15 +1,20 @@
-import { useState} from "react";
-import {useLocation } from "react-router-dom";
+import { useState } from "react";
+import { useLocation } from "react-router-dom";
 import useRazorpay from "react-razorpay";
 import { Box, Grid, Typography, TextField, Paper, Button } from "@mui/material";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import logo from "../../Images/logoNew.png";
-import { API_KEY } from "./constant.js";
+import {
+  Razor_API_KEY,
+  emailJs_Api,
+  email_PublicKey,
+  email_ServiceId,
+  email_TemplateId,
+} from "./constant.js";
+import axios from "axios";
 
-
-const payKey = API_KEY;
-
+const payKey = Razor_API_KEY;
 
 
 const validationSchema = Yup.object().shape({
@@ -27,75 +32,63 @@ const PaymentForm = () => {
   const [Razorpay] = useRazorpay();
   const location = useLocation();
   const { cardData } = location.state;
- 
- 
-    const exchangeRate = 60;
-    const usdAmount = Number(cardData.charge);
-    console.log("AMOUNT",usdAmount);
-    const inrAmount = usdAmount * exchangeRate;
-    console.log("AMOUNT", inrAmount);
+
+  const [paymentStatus, setPaymentStatus] = useState(null);
+
+  const exchangeRate = 60;
+  const usdAmount = Number(cardData.charge);
+  const inrAmount = usdAmount * exchangeRate;
 
   const formik = useFormik({
     initialValues: {
       firstName: "",
       lastName: "asd",
-      email: "john@example.com",
+      email: "guptaakhil0206@gmail.com",
       phone: "9999999999",
       address: "asd",
       city: "asd",
     },
     validationSchema: validationSchema,
-    onSubmit: (values) => {
+    onSubmit: async (values) => {
       // Handle form submission here
       console.log(values);
     },
   });
 
-  //---------------------------------
-  const [paymentStatus, setPaymentStatus] = useState(null);
-
-  const handlePaymentSuccess = (response) => {
+  const handlePaymentSuccess = async (response, firstName, lastName, email) => {
     setPaymentStatus("Payment successful!");
-    // You can perform additional actions here, like updating your database or displaying a confirmation message.
 
-        // Send an HTTP request to SendGrid API to send the email
-        fetch('https://api.sendgrid.com/v3/mail/send', {
-          method: 'POST',
-          headers: {
-              'Content-Type': 'application/json',
-              'Authorization': `Bearer YOUR_SENDGRID_API_KEY` // Replace with your SendGrid API key
-          },
-          body: JSON.stringify({
-              personalizations: [
-                  {
-                      to: [
-                          {
-                              email: formik.values.email // Pass user's email
-                          }
-                      ],
-                      subject: 'Your cab has been booked!'
-                  }
-              ],
-              from: {
-                  email: 'your-email@example.com' // Replace with your email address
-              },
-              content: [
-                  {
-                      type: 'text/plain',
-                      value: 'Dear customer, your cab has been successfully booked. Please come to our office to take the cab.'
-                  }
-              ]
-          })
-      })
-      .then(response => response.json())
-      .then(data => console.log(data))
-      .catch(error => console.error('Error:', error));
+    // Your EmailJS service ID, template ID, and Public Key
+    const serviceId = email_ServiceId;
+    const templateId = email_TemplateId;
+    const publicKey = email_PublicKey;
+
+    // Create an object with EmailJS service ID, template ID, Public Key, and Template params
+    const data = {
+      service_id: serviceId,
+      template_id: templateId,
+      user_id: publicKey,
+      template_params: {
+        from_name: `${firstName}`,
+        from_email: email,
+        to_name: "Polar's Car",
+        message: "hello from Polar's Car new++",
+      },
+    };
+
+    // Send the email using EmailJS
+    try {
+      const res = await axios.post(emailJs_Api, data);
+      console.log(res.data);
+    } catch (error) {
+      console.error(error.message);
+    }
   };
 
-  const handlePaymentError = (error) => {
-    setPaymentStatus("Payment failed!");
-    console.error(error);
-  };
+  // const handlePaymentError = (error) => {
+  //   setPaymentStatus("Payment failed!");
+  //   console.error(error);
+  // };
 
   const openRazorpayCheckout = (firstName, email, phone) => {
     const options = {
@@ -104,8 +97,11 @@ const PaymentForm = () => {
       currency: "INR",
       name: "Rental Cars",
       description: "Purchase Description",
-      image:  logo ,
-      handler: handlePaymentSuccess,
+      image: logo,
+      //handler: handlePaymentSuccess(),
+      handler: async (response) => {
+        handlePaymentSuccess(response, firstName, email);
+      },
       prefill: {
         name: firstName,
         email: email,
