@@ -8,7 +8,7 @@ git add --all
 git status
 
 # Commit changes with a specified message
-git commit -m "Added email feature to after the payment"
+git commit -m "added froms for the Login and SignUp page"
 
 # Push changes to the remote repository
 git push origin main

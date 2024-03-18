@@ -3,7 +3,6 @@ import { useLocation } from "react-router-dom";
 import useRazorpay from "react-razorpay";
 import { Box, Grid, Typography, TextField, Paper, Button } from "@mui/material";
 import { useFormik } from "formik";
-import * as Yup from "yup";
 import logo from "../../Images/logoNew.png";
 import {
   Razor_API_KEY,
@@ -13,20 +12,10 @@ import {
   email_TemplateId,
 } from "./constant.js";
 import axios from "axios";
+import { paymentValidationSchema } from "../SignUp/validation.jsx";
 
 const payKey = Razor_API_KEY;
 
-
-const validationSchema = Yup.object().shape({
-  firstName: Yup.string().required("First Name is required"),
-  lastName: Yup.string().required("Last Name is required"),
-  email: Yup.string()
-    .email("Invalid email address")
-    .required("Email is required"),
-  phone: Yup.string().required("Phone is required"),
-  address: Yup.string().required("Address is required"),
-  city: Yup.string().required("City is required"),
-});
 
 const PaymentForm = () => {
   const [Razorpay] = useRazorpay();
@@ -48,7 +37,7 @@ const PaymentForm = () => {
       address: "asd",
       city: "asd",
     },
-    validationSchema: validationSchema,
+    validationSchema: paymentValidationSchema,
     onSubmit: async (values) => {
       // Handle form submission here
       console.log(values);
@@ -69,10 +58,13 @@ const PaymentForm = () => {
       template_id: templateId,
       user_id: publicKey,
       template_params: {
-        from_name: `${firstName}`,
-        from_email: email,
-        to_name: "Polar's Car",
-        message: "hello from Polar's Car new++",
+        from_name: "Polar's Car Service",
+        from_email: `polar.service@cars.com`,
+        to_name:email,
+        message: `Hello ${firstName} from Polar's Car.
+                  Please have your keys from our nearest
+                  store.
+                  `,
       },
     };
 
@@ -89,6 +81,15 @@ const PaymentForm = () => {
   //   setPaymentStatus("Payment failed!");
   //   console.error(error);
   // };
+
+//   Greetings from {{from_name}}
+
+// Hello Sir/Mam,
+
+// {{message}}
+
+// Thanks
+// Polar's Services
 
   const openRazorpayCheckout = (firstName, email, phone) => {
     const options = {
