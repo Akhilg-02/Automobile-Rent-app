@@ -4,10 +4,7 @@ import {
   Box,
   Grid,
   Typography,
-  AppBar,
-  Toolbar,
   Menu,
-  Container,
   Avatar,
   Button,
   Tooltip,
@@ -18,7 +15,7 @@ import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import AdbIcon from "@mui/icons-material/Adb";
 
-import {  useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import {
   AppContainer,
   AppbarHeader,
@@ -28,6 +25,7 @@ import {
 import { Link, animateScroll as scroll } from "react-scroll";
 
 import "../../Css/navbar.css";
+import Login from "../SignUp/Login";
 
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
@@ -35,7 +33,7 @@ const style = {
   marginRight: "7vw",
 };
 
-function NavigationBar() {
+function NavigationBar({ loginHandleClickOpen }) {
   const [navBar, setNavBar] = useState(false);
 
   const navigate = useNavigate();
@@ -48,16 +46,16 @@ function NavigationBar() {
     }
   };
 
-  const handelCars=()=>{
-    navigate("/cars")
-  }
+  const handelCars = () => {
+    navigate("/cars");
+  };
 
-  const handelHome =()=>{
-    navigate("/")
-  }
- 
-  const [anchorElNav, setAnchorElNav] =useState(null);
-  const [anchorElUser, setAnchorElUser] =useState(null);
+  const handelHome = () => {
+    navigate("/");
+  };
+
+  const [anchorElNav, setAnchorElNav] = useState(null);
+  const [anchorElUser, setAnchorElUser] = useState(null);
 
   const handleOpenUserMenu = (event) => {
     setAnchorElUser(event.currentTarget);
@@ -65,17 +63,17 @@ function NavigationBar() {
 
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
-  }; 
-  
+  };
+
   // primaryTypographyProps={{style:null}} {navBar ? "navbar active" : "navbar"}
-  
+
   window.addEventListener("scroll", navScroller);
 
   return (
     <>
       <AppContainer container className={navBar ? "navbar active" : "navbar"}>
         <AppbarHeader>
-          <LogoImage src={logo} alt="logo" onClick={handelHome}/>
+          <LogoImage src={logo} alt="logo" onClick={handelHome} />
         </AppbarHeader>
         <MyList id="navList" type="row">
           <Link to="home" smooth={true} duration={500}>
@@ -92,40 +90,45 @@ function NavigationBar() {
           </Link>
           <Link to="services" smooth={true} duration={500}>
             <ListItemText
-              rimaryTypographyProps={{ style: style }}
+              primaryTypographyProps={{ style: style }}
               primary="Service"
             />{" "}
           </Link>
-        </MyList>
-        <Box sx={{ flexGrow: 0,marginRight:"1vw"}} ml={2}>
-            <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="" />
-              </IconButton>
-            </Tooltip>
-            <Menu
-              sx={{ mt: "45px" }}
-              id="menu-appbar"
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
-            >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
-              ))}
-            </Menu>
+          <Box>
+            <ListItemText>
+              <Login />
+            </ListItemText>
           </Box>
+        </MyList>
+        <Box sx={{ flexGrow: 0, marginRight: "1vw" }} ml={2}>
+          <Tooltip title="Open settings">
+            <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+              <Avatar alt="Remy Sharp" src="" />
+            </IconButton>
+          </Tooltip>
+          <Menu
+            sx={{ mt: "45px" }}
+            id="menu-appbar"
+            anchorEl={anchorElUser}
+            anchorOrigin={{
+              vertical: "top",
+              horizontal: "right",
+            }}
+            keepMounted
+            transformOrigin={{
+              vertical: "top",
+              horizontal: "right",
+            }}
+            open={Boolean(anchorElUser)}
+            onClose={handleCloseUserMenu}
+          >
+            {settings.map((setting) => (
+              <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                <Typography textAlign="center">{setting}</Typography>
+              </MenuItem>
+            ))}
+          </Menu>
+        </Box>
       </AppContainer>
     </>
   );

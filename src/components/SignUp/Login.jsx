@@ -1,10 +1,25 @@
 import { useState } from "react";
-import { Box, Grid, Typography, TextField, Paper, Button } from "@mui/material";
+import { Box, Grid, Typography, TextField, Paper, Button, Dialog } from "@mui/material";
 import { useFormik } from "formik";
-import * as Yup from "yup";
 import { LoginSchema } from "./validation";
 
+
+
+
+
 const Login = () => {
+
+  const [open, setOpen] = useState(false);
+
+  const loginHandleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const loginHandleClose = () => {
+    setOpen(false);
+  };
+
+
     const formik = useFormik({
         initialValues: {
           email: "guptaakhil0206@gmail.com",
@@ -12,7 +27,6 @@ const Login = () => {
         },
         validationSchema: LoginSchema,
         onSubmit: async (values) => {
-          // Handle form submission here
           console.log(values);
         },
       });
@@ -20,26 +34,39 @@ const Login = () => {
       const handleLogin = () => {
         // Trigger form validation
         formik.handleSubmit();
+        
     
         // Check if all fields have been touched and form is valid
-        if (
-          formik.isValid &&
-          Object.keys(formik.touched).length === Object.keys(formik.values).length
-        ) {
-            console.log("Form is valid");
-          // Extract values from the form
-          const { firstName, email, phone } = formik.values;
+        // if (
+        //   formik.isValid &&
+        //   Object.keys(formik.touched).length === Object.keys(formik.values).length
+        // ) {
+        //     console.log("Form is valid");
+        //   // Extract values from the form
+        //   const { firstName, email, phone } = formik.values;
     
-          // Call openRazorpayCheckout with form values
-          //openRazorpayCheckout(firstName, email, phone);
-        } else {
-          // If form is not valid or some fields are not touched, you can handle it accordingly (e.g., show error message)
-          console.log("Form is not valid or some fields are not touched");
-        }
+        //   // Call openRazorpayCheckout with form values
+        //   //openRazorpayCheckout(firstName, email, phone);
+        // } else {
+        //   // If form is not valid or some fields are not touched, you can handle it accordingly (e.g., show error message)
+        //   console.log("Form is not valid or some fields are not touched");
+        // }
       };
     
   return (
-    <Box>
+    <>
+    <Box onClick={loginHandleClickOpen}>
+      Login
+    </Box>
+    {/* <Button variant="outlined" onClick={loginHandleClickOpen}>
+        Open alert dialog
+      </Button> */}
+    <Dialog
+        open={open}
+        onClose={loginHandleClose}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
       <Paper elevation={3} style={{ padding: 20 }}>
         <Grid container spacing={2}>
           <Grid item xs={12} sm={12}>
@@ -58,8 +85,8 @@ const Login = () => {
           <Grid item xs={12} sm={12}>
             <TextField
               fullWidth
-              label="Last Name"
-              name="lastName"
+              label="Password"
+              name="password"
               value={formik.values.password}
               onChange={formik.handleChange}
               error={formik.touched.password && Boolean(formik.errors.password)}
@@ -85,7 +112,8 @@ const Login = () => {
           </Grid>
         </Grid>
       </Paper>
-    </Box>
+      </Dialog>
+    </>
   )
 }
 

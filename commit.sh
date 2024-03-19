@@ -8,7 +8,7 @@ git add --all
 git status
 
 # Commit changes with a specified message
-git commit -m "added froms for the Login and SignUp page"
+git commit -m "added dilog box for login fileds"
 
 # Push changes to the remote repository
 git push origin main
