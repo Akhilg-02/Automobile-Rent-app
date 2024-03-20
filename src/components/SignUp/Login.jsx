@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Box, Grid, Typography, TextField, Paper, Button, Dialog } from "@mui/material";
 import { useFormik } from "formik";
 import { LoginSchema } from "./validation";
+import SignUp from "./SignUp";
 
 
 
@@ -15,7 +16,7 @@ const Login = () => {
     setOpen(true);
   };
 
-  const loginHandleClose = () => {
+  const loginHandleClickClose = () => {
     setOpen(false);
   };
 
@@ -58,17 +59,17 @@ const Login = () => {
     <Box onClick={loginHandleClickOpen}>
       Login
     </Box>
-    {/* <Button variant="outlined" onClick={loginHandleClickOpen}>
-        Open alert dialog
-      </Button> */}
     <Dialog
         open={open}
-        onClose={loginHandleClose}
+        onClose={loginHandleClickClose}
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
       <Paper elevation={3} style={{ padding: 20 }}>
-        <Grid container spacing={2}>
+      <Typography variant="h3" style={{ textAlign:"center" }}>
+         Login
+        </Typography>
+        <Grid container spacing={2} mt={2}>
           <Grid item xs={12} sm={12}>
             <TextField
               fullWidth
@@ -107,10 +108,15 @@ const Login = () => {
               }}
               onClick={handleLogin}
             >
-              Book Now
+              Login
             </Button>
           </Grid>
         </Grid>
+        <Box >
+          <Typography style={{ textAlign:"center",cursor:"pointer" }} mt={2}>
+            <SignUp close={ loginHandleClickClose }/>
+          </Typography>
+        </Box>
       </Paper>
       </Dialog>
     </>

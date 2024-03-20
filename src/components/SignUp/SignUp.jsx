@@ -1,9 +1,23 @@
 import { useState } from "react";
-import { Box, Grid, Typography, TextField, Paper, Button } from "@mui/material";
+import { Box, Grid, Typography, TextField, Paper, Button,Dialog } from "@mui/material";
 import { useFormik } from "formik";
 import { SignUpSchema } from "./validation";
 
-const SignUp = () => {
+const SignUp = ({close}) => {
+
+  const [open, setOpen] = useState(false);
+
+  const signupHandleClickOpen = () => {
+    setOpen(true);
+    
+  };
+
+  const signupHandleClose = () => {
+    setOpen(false);
+    close()
+  };
+
+
     const formik = useFormik({
         initialValues: {
           name: "",
@@ -32,19 +46,29 @@ const SignUp = () => {
         ) {
             console.log("Form is valid");
           // Extract values from the form
-          const { firstName, email, phone } = formik.values;
+         // const { firstName, email, phone } = formik.values;
     
-          // Call openRazorpayCheckout with form values
-          //openRazorpayCheckout(firstName, email, phone);
         } else {
           // If form is not valid or some fields are not touched, you can handle it accordingly (e.g., show error message)
           console.log("Form is not valid or some fields are not touched");
         }
       };
   return (
-    <Box>
-      <Paper elevation={3} style={{ padding: 20 }}>
-        <Grid container spacing={2}>
+    <>
+    <Box onClick={signupHandleClickOpen}>
+      Create Account...Sign up!
+    </Box>
+    <Dialog
+        open={open}
+        onClose={signupHandleClose}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+      <Paper elevation={3} style={{ padding: 20, verflowY:'hidden',height:"800px"}}>
+        <Typography  variant="h3" style={{ textAlign:"center" }}>
+          Sign Up
+        </Typography>
+        <Grid container spacing={2} mt={2}>
           <Grid item xs={12} sm={12}>
             <TextField
               fullWidth
@@ -143,7 +167,8 @@ const SignUp = () => {
           </Grid>
         </Grid>
       </Paper>
-    </Box>
+      </Dialog>
+    </>
   )
 }
 

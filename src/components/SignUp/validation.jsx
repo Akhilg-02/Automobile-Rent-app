@@ -9,13 +9,15 @@ export const LoginSchema = Yup.object().shape({
   });
   
   export const SignUpSchema = Yup.object().shape({
-    firstName: Yup.string().required("First Name is required"),
+    name: Yup.string().required("Name is required"),
     email: Yup.string()
       .email("Invalid email address")
       .required("Email is required"),
+    licence:Yup.string().required("Licence number is required"),
     phone: Yup.string().required("Phone is required"),
     address: Yup.string().required("Address is required"),
     city: Yup.string().required("City is required"),
+    password: Yup.string().required("Password is required"),
   });
 
   export const paymentValidationSchema = Yup.object().shape({
