@@ -13,11 +13,13 @@ import {
 } from "./constant.js";
 import axios from "axios";
 import { paymentValidationSchema } from "../SignUp/validation.jsx";
+import { useLogin } from "../Contexts/LoginContext.jsx";
 
 const payKey = Razor_API_KEY;
 
 
 const PaymentForm = () => {
+  const { isLoggedIn } = useLogin();
   const [Razorpay] = useRazorpay();
   const location = useLocation();
   const { cardData } = location.state;
@@ -227,7 +229,9 @@ const PaymentForm = () => {
                 padding: "1rem",
                 backgroundColor: "#6A5ACD",
               }}
-              onClick={handleBookNow}
+              //onClick={handleBookNow}
+              onClick={isLoggedIn ? handleBookNow : () => alert("Please login to book the car.")}
+             disabled={!isLoggedIn}
             >
               Book Now
             </Button>

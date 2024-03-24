@@ -26,6 +26,7 @@ import { Link, animateScroll as scroll } from "react-scroll";
 
 import "../../Css/navbar.css";
 import Login from "../SignUp/Login";
+import { useLogin } from "../Contexts/LoginContext";
 
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
@@ -68,7 +69,7 @@ function NavigationBar({ loginHandleClickOpen }) {
   // primaryTypographyProps={{style:null}} {navBar ? "navbar active" : "navbar"}
 
   window.addEventListener("scroll", navScroller);
-
+  const {isLoggedIn} = useLogin();
   return (
     <>
       <AppContainer container className={navBar ? "navbar active" : "navbar"}>
@@ -96,7 +97,8 @@ function NavigationBar({ loginHandleClickOpen }) {
           </Link>
           <Box>
             <ListItemText>
-              <Login />
+            {isLoggedIn ? null : <Login />}
+              {/* <Login /> */}
             </ListItemText>
           </Box>
         </MyList>
