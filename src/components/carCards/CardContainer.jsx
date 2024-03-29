@@ -7,7 +7,7 @@ import { useState } from "react";
 
 import "../../Css/CarSideBox.css";
 import PickupTab from "../Dashbord/PickupTab";
-import { cars } from "./CarData";
+import { cars } from "./carData.js";
 
 const CardContainer = () => {
   const [selectedBrand, setSelectedBrand] = useState(null);
@@ -55,7 +55,8 @@ const CardContainer = () => {
                     car.name.toLowerCase() === selectedBrand.toLowerCase()) &&
                   (!selectedPriceRange ||
                     (selectedPriceRange === "low" && car.charge < 19) ||
-                    (selectedPriceRange === "high" && car.charge >= 15))
+                    (selectedPriceRange === "high" && car.charge >= 15)) ||
+                    selectedBrand === "All" 
               )
               .map((data, ind) => {
                 return (

@@ -6,7 +6,7 @@ import MonetizationOnOutlinedIcon from '@mui/icons-material/MonetizationOnOutlin
 import "../../Css/CarSideBox.css";
 
 const CarSideBox = ({ onSelectBrand, onSelectPriceRange }) => {
-  const brands = ["Porshe", "Hundyai", "BMW", "Toyota", "Audi","Volvo"];
+  const brands = ["Porshe", "Hundyai", "BMW", "Toyota", "Audi","Volvo","All"];
   return (
     <Box className="sideBox">
       <Typography variant="h5" component="div">

@@ -1,5 +1,5 @@
-import { useState } from "react";
-import logo from "../../Images/logoNew.png";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   Box,
   Grid,
@@ -11,24 +11,24 @@ import {
   MenuItem,
   ListItemText,
 } from "@mui/material";
-import IconButton from "@mui/material/IconButton";
-import MenuIcon from "@mui/icons-material/Menu";
-import AdbIcon from "@mui/icons-material/Adb";
-
-import { useNavigate } from "react-router-dom";
 import {
   AppContainer,
   AppbarHeader,
   LogoImage,
   MyList,
 } from "../../theme/navBar";
+import IconButton from "@mui/material/IconButton";
+import logo from "../../Images/logoNew.png";
+import avatar from "../../Images/avatar.webp";
 import { Link, animateScroll as scroll } from "react-scroll";
+import { onAuthStateChanged, signOut } from "firebase/auth";
 
 import "../../Css/navbar.css";
 import Login from "../SignUp/Login";
 import { useLogin } from "../Contexts/LoginContext";
+import { fireAuth } from "../firebase/fireBase-config";
 
-const settings = ["Profile", "Account", "Dashboard", "Logout"];
+const settings = ["Profile", "Account", "Logout"];
 
 const style = {
   marginRight: "7vw",
@@ -36,8 +36,33 @@ const style = {
 
 function NavigationBar({ loginHandleClickOpen }) {
   const [navBar, setNavBar] = useState(false);
+  const { isLoggedIn, login, logout } = useLogin();
+  const [isLoading, setIsLoading] = useState(true);
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    // Listen for authentication state changes
+    const unsubscribe = onAuthStateChanged(fireAuth, (user) => {
+      setIsLoading(false);
+      if (user) {
+        login();
+      } else {
+        logout();
+      }
+    });
+
+    // Clean up the listener
+    return () => unsubscribe();
+  }, [login, logout]);
+
+  const handleLogout = async () => {
+    try {
+      await signOut(fireAuth);
+    } catch (error) {
+      console.error("Error logging out:", error);
+    }
+  };
 
   const navScroller = () => {
     if (window.scrollY >= 80) {
@@ -55,7 +80,6 @@ function NavigationBar({ loginHandleClickOpen }) {
     navigate("/");
   };
 
-  const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
 
   const handleOpenUserMenu = (event) => {
@@ -67,9 +91,11 @@ function NavigationBar({ loginHandleClickOpen }) {
   };
 
   // primaryTypographyProps={{style:null}} {navBar ? "navbar active" : "navbar"}
-
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
   window.addEventListener("scroll", navScroller);
-  const {isLoggedIn} = useLogin();
+
   return (
     <>
       <AppContainer container className={navBar ? "navbar active" : "navbar"}>
@@ -97,7 +123,7 @@ function NavigationBar({ loginHandleClickOpen }) {
           </Link>
           <Box>
             <ListItemText>
-            {isLoggedIn ? null : <Login />}
+              {isLoggedIn ? null : <Login />}
               {/* <Login /> */}
             </ListItemText>
           </Box>
@@ -105,7 +131,7 @@ function NavigationBar({ loginHandleClickOpen }) {
         <Box sx={{ flexGrow: 0, marginRight: "1vw" }} ml={2}>
           <Tooltip title="Open settings">
             <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-              <Avatar alt="Remy Sharp" src="" />
+              <Avatar alt="emy Sharp" src={avatar} />
             </IconButton>
           </Tooltip>
           <Menu
@@ -125,7 +151,12 @@ function NavigationBar({ loginHandleClickOpen }) {
             onClose={handleCloseUserMenu}
           >
             {settings.map((setting) => (
-              <MenuItem key={setting} onClick={handleCloseUserMenu}>
+              <MenuItem
+                key={setting}
+                onClick={
+                  setting === "Logout" ? handleLogout : handleCloseUserMenu
+                }
+              >
                 <Typography textAlign="center">{setting}</Typography>
               </MenuItem>
             ))}

@@ -27,20 +27,6 @@ const Login = () => {
   const { login, setLoggedIn } = useLogin();
  // const [user, setUser] = useState({});
 
-  // useEffect(() => {
-  //   const unsubscribe = onAuthStateChanged(fireAuth, (currentUser) => {
-  //     setUser(currentUser); // Update the current user state
-  //   });
-
-  //   return () => {
-  //     unsubscribe(); // Unsubscribe from the onAuthStateChanged listener when component unmounts
-  //   };
-  // }, []); // Run the effect only once on component mount
-
-  // onAuthStateChanged(fireAuth, (currentUser) => {
-  //   setUser(currentUser); // Update the current user state
-  // });
-
   const loginHandleClickOpen = () => {
     setOpen(true);
   };
@@ -72,9 +58,11 @@ const Login = () => {
           password
         );
 
-        // Clear form fields
+        console.log("userCredential",userCredential);
+
+        // Clear form fields  
         formik.resetForm();
-        setSnackbarMessage('User successfully logged in');
+        setSnackbarMessage('User logged in successfully');
         setSnackbarColor(green[400]);
         setOpenSnackbar(true);
         // Update the login state upon successful login-Context
@@ -94,7 +82,7 @@ const Login = () => {
   //     // Trigger form validation
   //     formik.handleSubmit();
 
-  //     await new Promise((resolve) => setTimeout(resolve, 100));
+  //    await new Promise((resolve) => setTimeout(resolve, 100));
 
   //     const { email, password } = formik.values;
   //     const userCredential = await signInWithEmailAndPassword(
@@ -170,7 +158,9 @@ const Login = () => {
                   padding: "1rem",
                   backgroundColor: "#6A5ACD",
                 }}
-                onClick={formik.handleSubmit}
+                 onClick={formik.handleSubmit}
+               // onClick={handleLogin}
+
               >
                 Login
               </Button>
@@ -191,7 +181,7 @@ const Login = () => {
             horizontal: "right",
           }}
           open={openSnackbar}
-          autoHideDuration={3000}
+          autoHideDuration={2200}
           onClose={handleSnackbarClose}
         >
           <SnackbarContent

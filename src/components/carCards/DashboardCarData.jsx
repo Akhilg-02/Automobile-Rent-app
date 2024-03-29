@@ -9,9 +9,8 @@ import { Button, CardActionArea, CardActions } from "@mui/material";
 import "../../Css/DashboardCarData.css";
 
 const DashboardCarData = ({ data }) => {
-  //const[state,setState] = useState([])
   return (
-    <Box  rowSpacing={1} mt={2}>
+    <Box  rowSpacing={1} mt={2} position="relative">
       <Card sx={{ maxWidth: 325, height: "60vh" }} id="cardBody">
         <CardContent>
           <Typography className="headField" gutterBottom variant="h5" component="div">
@@ -22,13 +21,11 @@ const DashboardCarData = ({ data }) => {
           </Typography>
         </CardContent>
         <CardMedia
-          // sx={{width:"100%",marginLeft:"100px"}}
           component="img"
           height="240"
           image={data.img}
           alt="green iguana"
         />
-
         <Box sx={{textAlign: "center",marginTop:"2vh" }}>
           <Button
             sx={{

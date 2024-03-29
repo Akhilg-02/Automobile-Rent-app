@@ -197,17 +197,11 @@ const SignUp = ({ close }) => {
                 }}
                 onClick={handleSignup}
               >
-                Book Now
+                Register
               </Button>
             </Grid>
           </Grid>
         </Paper>
-        {/* <Snackbar
-        open={openSnackbar}
-        autoHideDuration={3000}
-        onClose={handleSnackbarClose}
-        message={snackbarMessage}
-      /> */}
       <Snackbar
         anchorOrigin={{
           vertical: 'top',

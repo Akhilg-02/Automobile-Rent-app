@@ -8,10 +8,10 @@
 # testing
 /coverage
 /src/components/Payment/constant.js
-/src/components/carCards/CarData.js
 
 # production
 /build
+/src/components/carCards/carData.js
 
 # misc
 .env
