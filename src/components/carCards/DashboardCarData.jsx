@@ -10,8 +10,8 @@ import "../../Css/DashboardCarData.css";
 
 const DashboardCarData = ({ data }) => {
   return (
-    <Box  rowSpacing={1} mt={2} position="relative">
-      <Card sx={{ maxWidth: 325, height: "60vh" }} id="cardBody">
+    <Box  rowSpacing={1} mt={2}>
+      <Card sx={{ maxWidth: 325, height: "50vh" }} id="cardBody">
         <CardContent>
           <Typography className="headField" gutterBottom variant="h5" component="div">
             {data.name}
@@ -20,9 +20,10 @@ const DashboardCarData = ({ data }) => {
             {data.charge}
           </Typography>
         </CardContent>
-        <CardMedia
+        
+          <CardMedia
           component="img"
-          height="240"
+          eight="200"
           image={data.img}
           alt="green iguana"
         />

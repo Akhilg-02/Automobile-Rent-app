@@ -32,7 +32,11 @@ const Cards = ({ data, index }) => {
   };
   return (
     <Box className="cardBox" rowSpacing={1} ml={3}>
-      <Card sx={{ height: "46vh", width: "21vw", adding: "4px" }}>
+      <Card sx={{ height: "46vh", width: "21vw", adding: "4px", backgroundColor:"",
+              backgroundImage: "linear-gradient(to left,  #4e4376  51%, #2b5876  100%)"
+             //linear-gradient(to right, #283048 0%, #859398  57%)
+           
+    }}>
         <CardMedia
           component="img"
           height="140"
