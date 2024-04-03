@@ -4,10 +4,10 @@ import PhoneIcon from "@mui/icons-material/Phone";
 import EmailIcon from "@mui/icons-material/Email";
 import RoomIcon from "@mui/icons-material/Room";
 import Fab from "@mui/material/Fab";
-import AddIcon from "@mui/icons-material/Add";
-import EditIcon from "@mui/icons-material/Edit";
-import FavoriteIcon from "@mui/icons-material/Favorite";
-import NavigationIcon from "@mui/icons-material/Navigation";
+import FacebookTwoToneIcon from '@mui/icons-material/FacebookTwoTone';
+import InstagramIcon from '@mui/icons-material/Instagram';
+import TwitterIcon from '@mui/icons-material/Twitter';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import logo from "../../Images/logoNew.png";
 
 import "../../Css/footer.css";
@@ -19,10 +19,11 @@ const Footer = () => {
         <Grid container columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
           {/* Website Information */}
           <Grid item xs={12} md={3}>
-            <img src={logo} alt="Website Logo" />
+            <br />
+            <img src={logo} alt="Website Logo"/>
             <br />
             <br />
-            <Typography style={{ position: "relative" }} mt={2}>
+            <Typography style={{ position: "relative" }} mt={2.5}>
               It is a long established fact that a reader will be distracted by
               the readable content of a page when looking at its layout. normal
               distribution of letters, as opposed to using 'Content here.
@@ -31,17 +32,16 @@ const Footer = () => {
             {/* ------ */}
             <Box sx={{ "& > :not(style)": { m: 1 } }}>
               <Fab color="primary" aria-label="add">
-                <AddIcon />
+                <FacebookTwoToneIcon />
               </Fab>
               <Fab color="secondary" aria-label="edit">
-                <EditIcon />
+                <InstagramIcon />
               </Fab>
-              <Fab variant="extended">
-                <NavigationIcon />
-                {/* Navigate sx={{ mr: 1 }} */}
+              <Fab  color="primary" >
+                <TwitterIcon />
               </Fab>
-              <Fab aria-label="like">
-                <FavoriteIcon />
+              <Fab aria-label="like" >
+                <LinkedInIcon style={{ color:"blue", fontSize:"50px"}} />
               </Fab>
             </Box>
           </Grid>

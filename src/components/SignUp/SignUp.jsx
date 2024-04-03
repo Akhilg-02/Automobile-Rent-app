@@ -98,7 +98,9 @@ const SignUp = ({ close }) => {
       >
         <Paper
           elevation={3}
-          style={{ padding: 20,}}
+          style={{ padding: 20,
+            background: 'linear-gradient(to right, #868f96 0%, #596164 100%)'
+          }}
         >
           <Typography variant="h3" style={{ textAlign: "center" }}>
             Sign Up
@@ -107,18 +109,18 @@ const SignUp = ({ close }) => {
             <Grid item xs={12} sm={12}>
               <TextField
                 fullWidth
-                label="Name"
+                placeholder="Name"
                 name="name"
                 value={formik.values.name}
                 onChange={formik.handleChange}
                 error={formik.touched.name && Boolean(formik.errors.name)}
-                helperText={formik.touched.name && formik.errors.name}
+                helperText={formik.touched.name && formik.errors.name} 
               />
             </Grid>
             <Grid item xs={12} sm={12}>
               <TextField
                 fullWidth
-                label="Email"
+               placeholder="Email"
                 name="email"
                 value={formik.values.email}
                 onChange={formik.handleChange}
@@ -129,7 +131,7 @@ const SignUp = ({ close }) => {
             <Grid item xs={12} sm={12}>
               <TextField
                 fullWidth
-                label="Licence no."
+               placeholder="Licence no."
                 name="licence"
                 value={formik.values.licence}
                 onChange={formik.handleChange}
@@ -140,7 +142,7 @@ const SignUp = ({ close }) => {
             <Grid item xs={12} sm={12}>
               <TextField
                 fullWidth
-                label="Phone"
+               placeholder="Phone"
                 name="phone"
                 value={formik.values.phone}
                 onChange={formik.handleChange}
@@ -151,7 +153,7 @@ const SignUp = ({ close }) => {
             <Grid item xs={12} sm={12}>
               <TextField
                 fullWidth
-                label="Address"
+               placeholder="Address"
                 name="address"
                 value={formik.values.address}
                 onChange={formik.handleChange}
@@ -162,7 +164,7 @@ const SignUp = ({ close }) => {
             <Grid item xs={12} sm={12}>
               <TextField
                 fullWidth
-                label="City"
+               placeholder="City"
                 name="city"
                 value={formik.values.city}
                 onChange={formik.handleChange}
@@ -173,7 +175,7 @@ const SignUp = ({ close }) => {
             <Grid item xs={12} sm={12}>
               <TextField
                 fullWidth
-                label="Password"
+                placeholder="Password"
                 name="password"
                 value={formik.values.password}
                 onChange={formik.handleChange}

@@ -40,9 +40,9 @@ const CardDetails = () => {
         </Typography>
       </Box>
       <Box className="" rowSpacing={1} mt={3}>
-        <Paper sx={{ width: "70vw", margin: "auto" }} elevation={3}>
+        <Box sx={{ width: "70vw", margin: "auto" }} elevation={3}>
           <img src={cardData.img} className="detailImg" alt="no img" />
-        </Paper>
+        </Box>
       </Box>
       <Box
         sx={{

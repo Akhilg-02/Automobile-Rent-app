@@ -117,7 +117,11 @@ const Login = () => {
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
-        <Paper elevation={3} style={{ padding: 20 }}>
+        <Paper elevation={3} style={{ 
+        padding: 20,
+        borderRadius:"0px",
+        background: 'linear-gradient(to right, #868f96 0%, #596164 100%)'
+        }}>
           <Typography variant="h3" style={{ textAlign: "center" }}>
             Login
           </Typography>
@@ -125,7 +129,7 @@ const Login = () => {
             <Grid item xs={12} sm={12}>
               <TextField
                 fullWidth
-                label="First Name"
+                placeholder="First Name"
                 name="firstName"
                 value={formik.values.email}
                 onChange={formik.handleChange}
@@ -136,7 +140,7 @@ const Login = () => {
             <Grid item xs={12} sm={12}>
               <TextField
                 fullWidth
-                label="Password"
+                placeholder="Password"
                 name="password"
                 value={formik.values.password}
                 onChange={formik.handleChange}

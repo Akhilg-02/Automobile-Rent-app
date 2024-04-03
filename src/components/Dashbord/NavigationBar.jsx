@@ -34,7 +34,7 @@ const style = {
   marginRight: "7vw",
 };
 
-function NavigationBar({ loginHandleClickOpen }) {
+function NavigationBar() {
   const [navBar, setNavBar] = useState(false);
   const { isLoggedIn, login, logout } = useLogin();
   const [isLoading, setIsLoading] = useState(true);

@@ -34,5 +34,20 @@
 
 .detailImg{
     height: 67vh;
+    width: 100%;
+    border-radius: 10px;
+    background-image: linear-gradient( to left, #605f60f6  51%, #2b587686  120%)
+}
+
+/* Car data Css */
+
+.carCard {
+    border:0px solid red;
+    height: 46vh;
+    width: 21vw;
+    padding: 4px;
+    pacity: 0.65;
+    /* to left,  #4e4376bb  51%, #2b5876  120% */
+    background-image: linear-gradient(to left,  #605f60f6  51%, #2b587686  120%)
 }
 

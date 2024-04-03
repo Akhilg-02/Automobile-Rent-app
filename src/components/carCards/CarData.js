@@ -72,7 +72,7 @@ export const cars = [
       passengers: 4,
       type: "Manual",
       ratings: 4.5,
-      charge: 20,
+      charge: 15,
       condition: "AC",
       img: car1,
     },

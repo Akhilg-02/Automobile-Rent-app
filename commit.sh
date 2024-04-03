@@ -8,7 +8,7 @@ git add --all
 git status
 
 # Commit changes with a specified message
-git commit -m "added bg color to car card and chnages images of dashboard"
+git commit -m "made maindatory changes in cards,footer"
 
 # Push changes to the remote repository
 git push origin main

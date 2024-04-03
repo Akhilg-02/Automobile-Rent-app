@@ -152,7 +152,7 @@ const PaymentForm = () => {
           <Grid item xs={12} sm={12}>
             <TextField
               fullWidth
-              label="First Name"
+              label="First name"
               name="firstName"
               value={formik.values.firstName}
               onChange={formik.handleChange}
@@ -165,7 +165,7 @@ const PaymentForm = () => {
           <Grid item xs={12} sm={12}>
             <TextField
               fullWidth
-              label="Last Name"
+              label="Last name"
               name="lastName"
               value={formik.values.lastName}
               onChange={formik.handleChange}
@@ -187,7 +187,7 @@ const PaymentForm = () => {
           <Grid item xs={12} sm={12}>
             <TextField
               fullWidth
-              label="Phone"
+              label="Phone no."
               name="phone"
               value={formik.values.phone}
               onChange={formik.handleChange}

@@ -9,6 +9,8 @@ import LineAxisRoundedIcon from "@mui/icons-material/LineAxisRounded";
 import PatternRoundedIcon from "@mui/icons-material/PatternRounded";
 import GradeRoundedIcon from "@mui/icons-material/GradeRounded";
 import AttachMoneyRoundedIcon from "@mui/icons-material/AttachMoneyRounded";
+import "../../Css/CarSideBox.css";
+
 
 const space = {
   display: "flex",
@@ -32,11 +34,7 @@ const Cards = ({ data, index }) => {
   };
   return (
     <Box className="cardBox" rowSpacing={1} ml={3}>
-      <Card sx={{ height: "46vh", width: "21vw", adding: "4px", backgroundColor:"",
-              backgroundImage: "linear-gradient(to left,  #4e4376  51%, #2b5876  100%)"
-             //linear-gradient(to right, #283048 0%, #859398  57%)
-           
-    }}>
+      <Card className="carCard">
         <CardMedia
           component="img"
           height="140"
@@ -45,7 +43,7 @@ const Cards = ({ data, index }) => {
         />
         <CardContent>
           <Box
-            style={{ display: "flex", gap: "9vw", justifyContent: "center" }}
+            style={{ display: "flex", gap: "9vw", justifyContent: "center",color:"white" }}
           >
             <Typography variant="h5" component="div">
               {data.name}
