@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation,useNavigate } from "react-router-dom";
 import useRazorpay from "react-razorpay";
 import { Box, Grid, Typography, TextField, Paper, Button } from "@mui/material";
 import { useFormik } from "formik";
@@ -23,6 +23,7 @@ const PaymentForm = () => {
   const [Razorpay] = useRazorpay();
   const location = useLocation();
   const { cardData } = location.state;
+  const navigate = useNavigate();
 
   const [paymentStatus, setPaymentStatus] = useState(null);
 
@@ -41,12 +42,12 @@ const PaymentForm = () => {
     },
     validationSchema: paymentValidationSchema,
     onSubmit: async (values) => {
-      // Handle form submission here
-      console.log(values);
+      //console.log(values);
+      handlePaymentSuccess(values.firstName,values.email);
     },
   });
 
-  const handlePaymentSuccess = async (response, firstName, lastName, email) => {
+  const handlePaymentSuccess = async (firstName,email) => {
     setPaymentStatus("Payment successful!");
 
     // Your EmailJS service ID, template ID, and Public Key
@@ -63,35 +64,22 @@ const PaymentForm = () => {
         from_name: "Polar's Car Service",
         from_email: `polar.service@cars.com`,
         to_name:email,
-        message: `Hello ${firstName} from Polar's Car.
+        message: `Hi ${firstName} from Polar's Car.
                   Please have your keys from our nearest
                   store.
                   `,
       },
     };
 
-    // Send the email using EmailJS
+    // Send the email using EmailJS 
     try {
       const res = await axios.post(emailJs_Api, data);
-      console.log(res.data);
+     // console.log(res.data);
+     //navigate('/payment-success')
     } catch (error) {
       console.error(error.message);
     }
   };
-
-  // const handlePaymentError = (error) => {
-  //   setPaymentStatus("Payment failed!");
-  //   console.error(error);
-  // };
-
-//   Greetings from {{from_name}}
-
-// Hello Sir/Mam,
-
-// {{message}}
-
-// Thanks
-// Polar's Services
 
   const openRazorpayCheckout = (firstName, email, phone) => {
     const options = {
@@ -101,9 +89,12 @@ const PaymentForm = () => {
       name: "Rental Cars",
       description: "Purchase Description",
       image: logo,
-      //handler: handlePaymentSuccess(),
       handler: async (response) => {
-        handlePaymentSuccess(response, firstName, email);
+        try {
+          await handlePaymentSuccess(firstName, email);
+        } catch (error) {
+          alert('Payment failed. Please try again.'); // Show alert message for failed payment
+        }
       },
       prefill: {
         name: firstName,
@@ -114,15 +105,15 @@ const PaymentForm = () => {
         color: "#e0312c",
       },
     };
-    const rzp1 = new Razorpay(options);
+    const rayzorPay = new Razorpay(options);
 
-    rzp1.on("payment.failed", function (response) {
+    rayzorPay.on("payment.failed", function (response) {
       alert(response.error.code);
       alert(response.error.step);
       alert(response.error.reason);
     });
 
-    rzp1.open();
+    rayzorPay.open();
   };
 
   const handleBookNow = () => {
@@ -139,9 +130,6 @@ const PaymentForm = () => {
 
       // Call openRazorpayCheckout with form values
       openRazorpayCheckout(firstName, email, phone);
-    } else {
-      // If form is not valid or some fields are not touched, you can handle it accordingly (e.g., show error message)
-      console.log("Form is not valid or some fields are not touched");
     }
   };
 
