@@ -1,14 +1,16 @@
 .payment-success-container {
-    display: flex;
+    display: grid;
     justify-content: center;
     align-items: center;
     height: 100%;
+    margin-top: 12vh;
   }
   
   .payment-success-message {
     text-align: center;
     max-width: 400px;
     padding: 20px;
+    margin: auto;
   }
   
   .success-heading {
@@ -29,14 +31,21 @@
   
   .thank-you {
     font-size: 16px;
-    color: #333;
+    color: #878484;
   }
   
   .car-image {
-    width: 200px;
-    height: auto;
+    width: 40vw;
+    height: 65vh;
     margin-top: 20px;
-    animation: driveAnimation 2s ease-in-out infinite alternate; /* Example animation */
+    justify-content: center;
+   /* animation: driveAnimation 2s ease-in-out infinite alternate;  Example animation */
+  }
+
+  .dashbord-btn{
+    height: 8vh;
+    width: 15vw;
+    margin-left: 12vw;
   }
   
   @keyframes driveAnimation {

@@ -8,7 +8,7 @@ git add --all
 git status
 
 # Commit changes with a specified message
-git commit -m "email js bug resolved , added new page to show payment sussess message"
+git commit -m "compelted all the flows for payment and add the payment sucess route"
 
 # Push changes to the remote repository
 git push origin main

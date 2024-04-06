@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { useLocation,useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import useRazorpay from "react-razorpay";
 import { Box, Grid, Typography, TextField, Paper, Button } from "@mui/material";
 import { useFormik } from "formik";
@@ -16,7 +16,6 @@ import { paymentValidationSchema } from "../SignUp/validation.jsx";
 import { useLogin } from "../Contexts/LoginContext.jsx";
 
 const payKey = Razor_API_KEY;
-
 
 const PaymentForm = () => {
   const { isLoggedIn } = useLogin();
@@ -43,13 +42,11 @@ const PaymentForm = () => {
     validationSchema: paymentValidationSchema,
     onSubmit: async (values) => {
       //console.log(values);
-      handlePaymentSuccess(values.firstName,values.email);
+      handlePaymentSuccess(values.firstName, values.email);
     },
   });
 
-  const handlePaymentSuccess = async (firstName,email) => {
-    setPaymentStatus("Payment successful!");
-
+  const handlePaymentSuccess = async (firstName, email) => {
     // Your EmailJS service ID, template ID, and Public Key
     const serviceId = email_ServiceId;
     const templateId = email_TemplateId;
@@ -63,7 +60,7 @@ const PaymentForm = () => {
       template_params: {
         from_name: "Polar's Car Service",
         from_email: `polar.service@cars.com`,
-        to_name:email,
+        to_name: email,
         message: `Hi ${firstName} from Polar's Car.
                   Please have your keys from our nearest
                   store.
@@ -71,11 +68,10 @@ const PaymentForm = () => {
       },
     };
 
-    // Send the email using EmailJS 
+   //Send the email using EmailJS
     try {
       const res = await axios.post(emailJs_Api, data);
      // console.log(res.data);
-     //navigate('/payment-success')
     } catch (error) {
       console.error(error.message);
     }
@@ -92,8 +88,11 @@ const PaymentForm = () => {
       handler: async (response) => {
         try {
           await handlePaymentSuccess(firstName, email);
+              setTimeout(() => {
+              navigate('/payment-success',{ state: { mail: email,name:firstName} });
+            }, 2000);
         } catch (error) {
-          alert('Payment failed. Please try again.'); // Show alert message for failed payment
+          alert("Payment failed. Please try again."); // Show alert message for failed payment
         }
       },
       prefill: {
@@ -218,12 +217,15 @@ const PaymentForm = () => {
                 backgroundColor: "#6A5ACD",
               }}
               //onClick={handleBookNow}
-              onClick={isLoggedIn ? handleBookNow : () => alert("Please login to book the car.")}
-             disabled={!isLoggedIn}
+              onClick={
+                isLoggedIn
+                  ? handleBookNow
+                  : () => alert("Please login to book the car.")
+              }
+              disabled={!isLoggedIn}
             >
               Book Now
             </Button>
-            {paymentStatus && <p>{paymentStatus}</p>}
           </Grid>
         </Grid>
       </Paper>
