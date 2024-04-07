@@ -8,7 +8,7 @@ git add --all
 git status
 
 # Commit changes with a specified message
-git commit -m "compelted all the flows for payment and add the payment sucess route"
+git commit -m "modified the design for navigation bar"
 
 # Push changes to the remote repository
 git push origin main

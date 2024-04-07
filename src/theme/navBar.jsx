@@ -33,7 +33,7 @@ export const MyList = styled(
   ustifyContent:"space-between",
   color: "white",
   lexFlow: 1,
-  textTransform: "uppercase",
+  extTransform: "uppercase",
   fontSize: "20px",
 }));
 
@@ -45,3 +45,10 @@ export const LogoImage = styled("img")(({ src }) => ({
   marginLeft:"-4%",
   color: "",
 }));
+
+export const dynamicHr = {
+  border: 'none',
+  borderBottom:' 1px solid #ffd700',
+  width: '40%',
+  margin:'auto'
+}

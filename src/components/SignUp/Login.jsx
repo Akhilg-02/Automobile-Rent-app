@@ -15,9 +15,11 @@ import { green, red } from "@mui/material/colors";
 import { useFormik } from "formik";
 import { LoginSchema } from "./validation";
 import SignUp from "./SignUp";
-import { signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
+import { signInWithEmailAndPassword} from "firebase/auth";
 import { fireAuth } from "../firebase/fireBase-config";
 import { useLogin } from "../Contexts/LoginContext";
+import { dynamicHr } from "../../theme/navBar";
+
 
 const Login = () => {
   const [open, setOpen] = useState(false);
@@ -25,7 +27,7 @@ const Login = () => {
   const [snackbarMessage, setSnackbarMessage] = useState("");
   const [snackbarColor, setSnackbarColor] = useState("");
   const { login, setLoggedIn } = useLogin();
- // const [user, setUser] = useState({});
+
 
   const loginHandleClickOpen = () => {
     setOpen(true);
@@ -77,40 +79,11 @@ const Login = () => {
     },
   });
 
-  // const handleLogin = async () => {
-  //   try {
-  //     // Trigger form validation
-  //     formik.handleSubmit();
-
-  //    await new Promise((resolve) => setTimeout(resolve, 100));
-
-  //     const { email, password } = formik.values;
-  //     const userCredential = await signInWithEmailAndPassword(
-  //       fireAuth,
-  //       email,
-  //       password
-  //     );
-
-  //     const user = userCredential.user;
-
-  //     // Clear form fields
-  //     formik.resetForm();
-  //     setSnackbarMessage("User successfully Login");
-  //     setSnackbarColor(green[400]);
-  //     setOpenSnackbar(true);
-  //     // Update the login state upon successful login-Context
-  //     login();
-  //     setLoggedIn(true);
-  //   } catch (error) {
-  //     setSnackbarMessage("User Login failed");
-  //     setSnackbarColor(red[400]);
-  //     setOpenSnackbar(true);
-  //   }
-  // };
-
   return (
     <>
-      <Box onClick={loginHandleClickOpen}>Login</Box>
+      <Box onClick={loginHandleClickOpen}>
+        Login
+      </Box>
       <Dialog
         open={open}
         onClose={loginHandleClickClose}
@@ -120,10 +93,11 @@ const Login = () => {
         <Paper elevation={3} style={{ 
         padding: 20,
         borderRadius:"0px",
-        background: 'linear-gradient(to right, #868f96 0%, #596164 100%)'
+        background: 'linear-gradient(to right, #868f96 0%, #596164 100%)',
         }}>
           <Typography variant="h3" style={{ textAlign: "center" }}>
             Login
+            <hr style={dynamicHr} />
           </Typography>
           <Grid container spacing={2} mt={2}>
             <Grid item xs={12} sm={12}>
@@ -163,8 +137,6 @@ const Login = () => {
                   backgroundColor: "#6A5ACD",
                 }}
                  onClick={formik.handleSubmit}
-               // onClick={handleLogin}
-
               >
                 Login
               </Button>

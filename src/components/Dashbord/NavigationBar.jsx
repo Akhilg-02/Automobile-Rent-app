@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+import "../../Css/navbar.css";
 import {
   Box,
   Grid,
@@ -11,35 +12,42 @@ import {
   MenuItem,
   ListItemText,
 } from "@mui/material";
-import {
-  AppContainer,
-  AppbarHeader,
-  LogoImage,
-  MyList,
-} from "../../theme/navBar";
+import { styled } from "@mui/material/styles";
 import IconButton from "@mui/material/IconButton";
-import logo from "../../Images/logoNew.png";
 import avatar from "../../Images/avatar.webp";
-import { Link, animateScroll as scroll } from "react-scroll";
-import { onAuthStateChanged, signOut } from "firebase/auth";
+import logo from "../../Images/logoNew.png";
 
-import "../../Css/navbar.css";
 import Login from "../SignUp/Login";
 import { useLogin } from "../Contexts/LoginContext";
 import { fireAuth } from "../firebase/fireBase-config";
+import { onAuthStateChanged, signOut } from "firebase/auth";
 
 const settings = ["Profile", "Account", "Logout"];
 
-const style = {
-  marginRight: "7vw",
-};
+export const LogoImage = styled("img")(({ src }) => ({
+  scr: `url(${src})`,
+  width: "20vw",
+  height: "40vh",
+  marginLeft:"-4%",
+}));
 
-function NavigationBar() {
+
+const NavigationBar = () => {
   const [navBar, setNavBar] = useState(false);
   const { isLoggedIn, login, logout } = useLogin();
   const [isLoading, setIsLoading] = useState(true);
+  const [click, setClick] = useState(false);
+  const [anchorElUser, setAnchorElUser] = useState(null);
 
-  const navigate = useNavigate();
+  const handleClick = () => setClick(!click);
+
+  const handleOpenUserMenu = (event) => {
+    setAnchorElUser(event.currentTarget);
+  };
+
+  const handleCloseUserMenu = () => {
+    setAnchorElUser(null);
+  };
 
   useEffect(() => {
     // Listen for authentication state changes
@@ -72,62 +80,53 @@ function NavigationBar() {
     }
   };
 
-  const handelCars = () => {
-    navigate("/cars");
-  };
-
-  const handelHome = () => {
-    navigate("/");
-  };
-
-  const [anchorElUser, setAnchorElUser] = useState(null);
-
-  const handleOpenUserMenu = (event) => {
-    setAnchorElUser(event.currentTarget);
-  };
-
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
-  };
-
-  // primaryTypographyProps={{style:null}} {navBar ? "navbar active" : "navbar"}
   if (isLoading) {
     return <div>Loading...</div>;
   }
-  window.addEventListener("scroll", navScroller);
 
+  window.addEventListener("scroll", navScroller);
   return (
-    <>
-      <AppContainer container className={navBar ? "navbar active" : "navbar"}>
-        <AppbarHeader>
-          <LogoImage src={logo} alt="logo" onClick={handelHome} />
-        </AppbarHeader>
-        <MyList id="navList" type="row">
-          <Link to="home" smooth={true} duration={500}>
-            <ListItemText
-              primaryTypographyProps={{ style: style }}
-              primary="Home"
-            />
-          </Link>
-          <Link onClick={handelCars} smooth={true} duration={500}>
-            <ListItemText
-              primaryTypographyProps={{ style: style }}
-              primary="Car"
-            />
-          </Link>
-          <Link to="services" smooth={true} duration={500}>
-            <ListItemText
-              primaryTypographyProps={{ style: style }}
-              primary="Service"
-            />{" "}
-          </Link>
-          <Box>
-            <ListItemText>
-              {isLoggedIn ? null : <Login />}
-              {/* <Login /> */}
-            </ListItemText>
-          </Box>
-        </MyList>
+    <nav className={navBar ? "navbar active" : "navbar"}>
+      <div className="nav-container">
+        <NavLink exact to="/" className="nav-logo">
+          <LogoImage src={logo} alt="logo"/>
+        </NavLink>
+        <ul className={click ? "nav-menu active" : "nav-menu"}>
+          <li className="nav-item">
+            <NavLink
+              exact
+              to="/"
+              activeClassName="active"
+              className="nav-links"
+              onClick={handleClick}
+            >
+              Home
+            </NavLink>
+          </li>
+          <li className="nav-item">
+            <NavLink
+              exact
+              to="/cars"
+              activeClassName="active"
+              className="nav-links"
+              onClick={handleClick}
+            >
+              Cars
+            </NavLink>
+          </li>
+          <li className="nav-item">
+            <NavLink
+              exact
+              to="/service"
+              activeClassName="active"
+              className="nav-links"
+              onClick={handleClick}
+            >
+              Contact
+            </NavLink>
+          </li>
+          <li className="nav-item">{isLoggedIn ? null : <Login />}</li>
+        </ul>
         <Box sx={{ flexGrow: 0, marginRight: "1vw" }} ml={2}>
           <Tooltip title="Open settings">
             <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
@@ -162,8 +161,9 @@ function NavigationBar() {
             ))}
           </Menu>
         </Box>
-      </AppContainer>
-    </>
+      </div>
+    </nav>
   );
-}
+};
+
 export default NavigationBar;

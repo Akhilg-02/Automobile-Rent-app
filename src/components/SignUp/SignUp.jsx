@@ -8,21 +8,21 @@ import {
   Button,
   Dialog,
   Snackbar,
-  SnackbarContent
-  
+  SnackbarContent,
 } from "@mui/material";
-import { CheckCircleOutline, ErrorOutline } from '@mui/icons-material';
+import { CheckCircleOutline, ErrorOutline } from "@mui/icons-material";
 import { green, red } from "@mui/material/colors";
 import { useFormik } from "formik";
 import { SignUpSchema } from "./validation";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { fireAuth } from "../firebase/fireBase-config";
+import { dynamicHr } from "../../theme/navBar";
 
 const SignUp = ({ close }) => {
   const [open, setOpen] = useState(false);
   const [openSnackbar, setOpenSnackbar] = useState(false);
-  const [snackbarMessage, setSnackbarMessage] = useState('');
-  const [snackbarColor, setSnackbarColor] = useState('');
+  const [snackbarMessage, setSnackbarMessage] = useState("");
+  const [snackbarColor, setSnackbarColor] = useState("");
 
   const signupHandleClickOpen = () => {
     setOpen(true);
@@ -34,62 +34,61 @@ const SignUp = ({ close }) => {
   };
 
   const handleSnackbarClose = (event, reason) => {
-    if (reason === 'clickaway') {
+    if (reason === "clickaway") {
       return;
     }
     setOpenSnackbar(false);
   };
 
-
   const formik = useFormik({
     initialValues: {
-      name: "Chirag Ranjan",
-      email: "Chirag123@yahoo.com",
-      licence: "4485415",
-      phone: "9999999999",
-      address: "asd",
-      city: "asd",
-      password: "Chirag123",
+      name: "",
+      email: "",
+      licence: "",
+      phone: "",
+      address: "",
+      city: "",
+      password: "",
     },
     validationSchema: SignUpSchema,
     onSubmit: async (values) => {
       // Handle form submission here
-      console.log(values);
+      // console.log(values);
     },
   });
 
   const handleSignup = async () => {
     try {
-       formik.handleSubmit();
+      formik.handleSubmit();
 
-       await new Promise(resolve => setTimeout(resolve, 100));
+      await new Promise((resolve) => setTimeout(resolve, 100));
 
-        const { email, password } = formik.values;
-        const userCredential = await createUserWithEmailAndPassword(
-          fireAuth,
-          email,
-          password
-        );
-        
-        const user = userCredential.user;
-       
-        // Clear form fields
-        formik.resetForm();
-        setSnackbarMessage('User successfully registered');
-        setSnackbarColor(green[400]);
-        setOpenSnackbar(true);
-        //console.log("User created successfully: line-80", user);
+      const { email, password } = formik.values;
+      const userCredential = await createUserWithEmailAndPassword(
+        fireAuth,
+        email,
+        password
+      );
 
+      const user = userCredential.user;
+
+      // Clear form fields
+      formik.resetForm();
+      setSnackbarMessage("User successfully registered");
+      setSnackbarColor(green[400]);
+      setOpenSnackbar(true);
     } catch (error) {
-      setSnackbarMessage('User registration failed');
+      setSnackbarMessage("User registration failed");
       setSnackbarColor(red[400]);
       setOpenSnackbar(true);
     }
   };
   return (
     <>
-      <Box onClick={signupHandleClickOpen}>Create Account...Sign up!</Box>
-     
+      <Box onClick={signupHandleClickOpen} color={"yellow"}>
+        Register here..!
+      </Box>
+
       <Dialog
         open={open}
         onClose={signupHandleClose}
@@ -98,12 +97,14 @@ const SignUp = ({ close }) => {
       >
         <Paper
           elevation={3}
-          style={{ padding: 20,
-            background: 'linear-gradient(to right, #868f96 0%, #596164 100%)'
+          style={{
+            padding: 20,
+            background: "linear-gradient(to right, #868f96 0%, #596164 100%)",
           }}
         >
           <Typography variant="h3" style={{ textAlign: "center" }}>
             Sign Up
+            <hr style={dynamicHr} />
           </Typography>
           <Grid container spacing={2} mt={2}>
             <Grid item xs={12} sm={12}>
@@ -114,13 +115,13 @@ const SignUp = ({ close }) => {
                 value={formik.values.name}
                 onChange={formik.handleChange}
                 error={formik.touched.name && Boolean(formik.errors.name)}
-                helperText={formik.touched.name && formik.errors.name} 
+                helperText={formik.touched.name && formik.errors.name}
               />
             </Grid>
             <Grid item xs={12} sm={12}>
               <TextField
                 fullWidth
-               placeholder="Email"
+                placeholder="Email"
                 name="email"
                 value={formik.values.email}
                 onChange={formik.handleChange}
@@ -131,7 +132,7 @@ const SignUp = ({ close }) => {
             <Grid item xs={12} sm={12}>
               <TextField
                 fullWidth
-               placeholder="Licence no."
+                placeholder="Licence no."
                 name="licence"
                 value={formik.values.licence}
                 onChange={formik.handleChange}
@@ -142,7 +143,7 @@ const SignUp = ({ close }) => {
             <Grid item xs={12} sm={12}>
               <TextField
                 fullWidth
-               placeholder="Phone"
+                placeholder="Phone"
                 name="phone"
                 value={formik.values.phone}
                 onChange={formik.handleChange}
@@ -153,7 +154,7 @@ const SignUp = ({ close }) => {
             <Grid item xs={12} sm={12}>
               <TextField
                 fullWidth
-               placeholder="Address"
+                placeholder="Address"
                 name="address"
                 value={formik.values.address}
                 onChange={formik.handleChange}
@@ -164,7 +165,7 @@ const SignUp = ({ close }) => {
             <Grid item xs={12} sm={12}>
               <TextField
                 fullWidth
-               placeholder="City"
+                placeholder="City"
                 name="city"
                 value={formik.values.city}
                 onChange={formik.handleChange}
@@ -204,29 +205,29 @@ const SignUp = ({ close }) => {
             </Grid>
           </Grid>
         </Paper>
-      <Snackbar
-        anchorOrigin={{
-          vertical: 'top',
-          horizontal: 'right',
-        }}
-        open={openSnackbar}
-        autoHideDuration={3000}
-        onClose={handleSnackbarClose}
-      >
-        <SnackbarContent
-          style={{ backgroundColor: snackbarColor }}
-          message={
-            <Box display="flex" alignItems="center">
-              {snackbarColor === green[600] ? (
-                <CheckCircleOutline sx={{ marginRight: 1 }} />
-              ) : (
-                <ErrorOutline sx={{ marginRight: 1 }} />
-              )}
-              {snackbarMessage}
-            </Box>
-          }
-        />
-      </Snackbar>
+        <Snackbar
+          anchorOrigin={{
+            vertical: "top",
+            horizontal: "right",
+          }}
+          open={openSnackbar}
+          autoHideDuration={3000}
+          onClose={handleSnackbarClose}
+        >
+          <SnackbarContent
+            style={{ backgroundColor: snackbarColor }}
+            message={
+              <Box display="flex" alignItems="center">
+                {snackbarColor === green[600] ? (
+                  <CheckCircleOutline sx={{ marginRight: 1 }} />
+                ) : (
+                  <ErrorOutline sx={{ marginRight: 1 }} />
+                )}
+                {snackbarMessage}
+              </Box>
+            }
+          />
+        </Snackbar>
       </Dialog>
     </>
   );
