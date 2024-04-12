@@ -21,8 +21,8 @@ const PaymentSuccess = () => {
         </p>
         <p className="thank-you">Thank you for choosing our service.</p>
       </div>
-      <Link to="/">
-        <Button className="dashbord-btn" variant="contained" color="success">
+      <Link to="/" style={{margin:"auto"}}>
+        <Button className="dashbord-btn" variant="contained" color="success" >
           Back to Dashboard
         </Button>
       </Link>

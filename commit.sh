@@ -8,7 +8,7 @@ git add --all
 git status
 
 # Commit changes with a specified message
-git commit -m "modified the design for navigation bar"
+git commit -m "application completed"
 
 # Push changes to the remote repository
 git push origin main

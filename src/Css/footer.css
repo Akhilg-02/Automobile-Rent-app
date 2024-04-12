@@ -1,11 +1,10 @@
 #footer {
-    background-color: #333333;
+    background-color: rgba(23, 26, 27, 0.864);
     color: #fff;
     padding: 20px;
     width:100%;
     margin-top: 5vh;
     cursor: pointer;
-    /* margin-left: 5vw; */
   }
 
   #footer img {

@@ -94,14 +94,25 @@ const SignUp = ({ close }) => {
         onClose={signupHandleClose}
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
+        maxWidth="sm"
+        PaperProps={{
+          style: {
+            padding: 20,
+            background: "linear-gradient(to right, #868f96 0%, #596164 100%)",
+            display: "flex",
+            flexDirection: "column",
+            maxHeight: "95%"
+          },
+        }}
       >
-        <Paper
+        {/* <Paper
           elevation={3}
           style={{
+            overflowY: "hidden", // Adding scrollbar if needed
             padding: 20,
             background: "linear-gradient(to right, #868f96 0%, #596164 100%)",
           }}
-        >
+        > */}
           <Typography variant="h3" style={{ textAlign: "center" }}>
             Sign Up
             <hr style={dynamicHr} />
@@ -177,6 +188,7 @@ const SignUp = ({ close }) => {
               <TextField
                 fullWidth
                 placeholder="Password"
+                type="password" 
                 name="password"
                 value={formik.values.password}
                 onChange={formik.handleChange}
@@ -187,6 +199,7 @@ const SignUp = ({ close }) => {
               />
             </Grid>
           </Grid>
+          <div style={{ flex: 1 }}></div> {/* Spacer to push content upwards */}
           <Grid container justifyContent="center" mt={3}>
             <Grid item>
               <Button
@@ -197,6 +210,8 @@ const SignUp = ({ close }) => {
                   width: "20vw",
                   padding: "1rem",
                   backgroundColor: "#6A5ACD",
+                  position: "sticky", // Ensuring the button remains sticky
+                  bottom: 20, // Adjust this value as needed
                 }}
                 onClick={handleSignup}
               >
@@ -204,7 +219,7 @@ const SignUp = ({ close }) => {
               </Button>
             </Grid>
           </Grid>
-        </Paper>
+        {/* </Paper> */}
         <Snackbar
           anchorOrigin={{
             vertical: "top",

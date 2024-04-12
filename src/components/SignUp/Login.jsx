@@ -46,8 +46,8 @@ const Login = () => {
 
   const formik = useFormik({
     initialValues: {
-      email: "Chirag123@yahoo.com",
-      password: "Chirag123",
+      email: "",
+      password: "",
     },
     validationSchema: LoginSchema,
     onSubmit: async (values) => {
@@ -103,8 +103,8 @@ const Login = () => {
             <Grid item xs={12} sm={12}>
               <TextField
                 fullWidth
-                placeholder="First Name"
-                name="firstName"
+                placeholder="Email"
+                name="email"
                 value={formik.values.email}
                 onChange={formik.handleChange}
                 error={formik.touched.email && Boolean(formik.errors.email)}
@@ -115,6 +115,7 @@ const Login = () => {
               <TextField
                 fullWidth
                 placeholder="Password"
+                type="password" 
                 name="password"
                 value={formik.values.password}
                 onChange={formik.handleChange}

@@ -117,7 +117,7 @@ const NavigationBar = () => {
           <li className="nav-item">
             <NavLink
               exact
-              to="/service"
+              to="/contact-us"
               activeClassName="active"
               className="nav-links"
               onClick={handleClick}
