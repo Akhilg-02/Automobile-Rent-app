@@ -9,6 +9,7 @@ Enjoy hassle-free vehicle rentals through our user-friendly app. Users can choos
 - Implemented Firebase for authentication and authorization.
 - Integrated Razorpay for seamless payment processing.
 - Utilized the Context API for state management within the application.
+- After the user completes the payment, a confirmation email is sent.
 
 ### Dashboard 
 
@@ -34,6 +35,10 @@ Enjoy hassle-free vehicle rentals through our user-friendly app. Users can choos
 ### Payment Success
 
 ![Dashboard](src/Images/paySuccess.png)
+
+### Confirmation Email
+
+![Dashboard](src/Images/email.png)
 
 ### Contact Us
 
