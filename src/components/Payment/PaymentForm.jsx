@@ -33,11 +33,11 @@ const PaymentForm = () => {
   const formik = useFormik({
     initialValues: {
       firstName: "",
-      lastName: "asd",
-      email: "guptaakhil0206@gmail.com",
-      phone: "9999999999",
-      address: "asd",
-      city: "asd",
+      lastName: "",
+      email: "",
+      phone: "",
+      address: "",
+      city: "",
     },
     validationSchema: paymentValidationSchema,
     onSubmit: async (values) => {

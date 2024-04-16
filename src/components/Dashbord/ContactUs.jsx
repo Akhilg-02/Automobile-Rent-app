@@ -62,7 +62,7 @@ const ContactUsPage = () => {
                   placeholder="Message"
                   multiline
                   rows={4}
-                  variant="outlined" //
+                  variant="outlined"
                 />
                 <Button variant="contained" color="primary">
                   Submit
@@ -72,7 +72,7 @@ const ContactUsPage = () => {
           </Grid>
 
           {/* Right Section */}
-          <Grid item xs={12} md={6}>
+          <Grid item xs={12} md={6} mt={3}>
             <Typography variant="h5">Contact Us</Typography>
             <Box style={{ display: "flex", marginTop: "3vh" }}>
               <Box mr={3}>
@@ -111,7 +111,7 @@ const ContactUsPage = () => {
             </Box>
             <br />
             {/* Social Media Icons */}
-            <Box sx={{ "& > :not(style)": { m: 1 } }}>
+            <Box sx={{ "& > :not(style)": { m: 1 } }} mt={3}>
               <Fab color="primary" aria-label="Facebook">
                 <FacebookTwoToneIcon />
               </Fab>
