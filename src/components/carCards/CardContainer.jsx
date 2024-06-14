@@ -7,7 +7,7 @@ import { useState } from "react";
 
 import "../../Css/CarSideBox.css";
 import PickupTab from "../Dashbord/PickupTab";
-import { cars } from "./carData.js";
+import { cars } from "./carData";
 
 const CardContainer = () => {
   const [selectedBrand, setSelectedBrand] = useState(null);
