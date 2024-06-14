@@ -8,7 +8,7 @@ git add --all
 git status
 
 # Commit changes with a specified message
-git commit -m "updated the readme file"
+git commit -m "updated the configuration of application"
 
 # Push changes to the remote repository
 git push origin main
