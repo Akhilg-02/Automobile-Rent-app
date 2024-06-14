@@ -1,5 +1,5 @@
 //Razor Pay
-export const Razor_API_KEY = process.env.RAZOR_API_KEY;
+export const razor_API_KEY = process.env.RAZOR_API_KEY;
 //EmailJS
 export const email_ServiceId = process.env.EMAIL_SERVICE_ID;
 export const email_TemplateId = process.env.EMAIL_TEMPLATE_ID;

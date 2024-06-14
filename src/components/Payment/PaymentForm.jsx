@@ -5,7 +5,7 @@ import { Box, Grid, Typography, TextField, Paper, Button } from "@mui/material";
 import { useFormik } from "formik";
 import logo from "../../Images/logoNew.png";
 import {
-  Razor_API_KEY,
+  razor_API_KEY,
   emailJs_Api,
   email_PublicKey,
   email_ServiceId,
@@ -15,7 +15,7 @@ import axios from "axios";
 import { paymentValidationSchema } from "../SignUp/validation.jsx";
 import { useLogin } from "../Contexts/LoginContext.jsx";
 
-const payKey = Razor_API_KEY;
+const payKey = razor_API_KEY;
 
 const PaymentForm = () => {
   const { isLoggedIn } = useLogin();
