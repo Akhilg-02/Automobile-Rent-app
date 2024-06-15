@@ -2,12 +2,12 @@
 
 # dependencies
 /node_modules
-./src/components/Payment/constant.js
 /.pnp
 .pnp.js
 
 # testing
 /coverage
+/src/components/Payment/constant.js
 
 # production
 /build
