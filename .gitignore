@@ -2,7 +2,7 @@
 
 # dependencies
 /node_modules
-/src/components/Payment/constant.js
+./src/components/Payment/constant.js
 /.pnp
 .pnp.js
 
