@@ -7,7 +7,7 @@
 
 # testing
 /coverage
-/src/components/Payment/constant.js
+./src/components/Payment/constant.js
 
 # production
 /build
